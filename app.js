@@ -1,22 +1,5 @@
-
-//***********Forma redundante*************//
-//A duas formas que usei para alterar o h1 e o title são corretas porém são repetitivas e redundantes, existe uma forma mais otimizada de repetir esses códigos que é criando uma função para eles, assim como fiz abaixo deles
-/*
-let titulo = document.querySelector('h1'); //document é menção do documento html, ou seja, fazendo uma leitura dele, querySelector é para especificar o parâmetro do html ao qual faço menção, que nesse caso é o <h1>. Em outras palavras: A variável 'titulo' é igual a <h1> no documento .html
-titulo.innerHTML = 'Jogo do Índio'; //innerHTML ou seja, dentro do HTML. No html o conteúdo da variável 'titulo' vai substituir o conteúdo do <h1>
-
-let tituloaba = document.querySelector('title');
-tituloaba.innerHTML = 'Jogo Indígena'; //eu basicamente mudei o título da página, que vai na aba do navegador. Ao invés de mudar diretamente no próprio html o fiz por aqui
-
-let paragrafo = document.querySelector('p');
-paragrafo.innerHTML = 'Qual o número indígena? 1 a 10';
-
-//***********Forma redundante*************/ //São 3 codigos (titulo, tituloaba e paragrafo) que podem todos serem resumidos em apenas uma função
-
-//A forma otimizada é criando uma função para sempre ser lida, ao invés de toda vez repetir o código inteiro, segue a função:
-
-ndenumeroSecreto = 10;//Dificuldade do jogo
-let numeroSecreto = gerarNumeroAleatorio(); //Aqui eu chamo a função de baixo dizendo que o numeroSecreto é IGUAL ao gerarNumeroAleatorio
+dificuldade = 10;//Dificuldade do jogo
+let numeroSecreto = gerarNumeroAleatorio(); //criei o número secreto, sendo ele o produto da função gerarNumeroAleatorio
 let tentativas = 0;
 let chute = document.querySelector('input').value; //O '.valeu' serve para ser lido APENAS a informação dentro da caixa input
 let nivel = 1;
@@ -44,12 +27,12 @@ function trocaimagem (imagem, caminhoSrc)
 //////////////////////////////////////////////////////
 function gerarNumeroAleatorio()
 {
-    return parseInt(Math.random() * ndenumeroSecreto +1); //o return serve para ele retornar o valor da função para a variável que a solicitou, que no caso é um número aleatório
+    return parseInt(Math.random() * dificuldade +1); //o return serve para ele retornar o valor da função para a variável que a solicitou, que no caso é um número aleatório
 }
 //////////////////////////////////////////////////////
 function limpaCampo ()
 {
-    chute = document.querySelector('input');//Como não precisa ser lido nada, não se fez necessário o .valeu
+    chute = document.querySelector('input');//Como não precisa ser lido nada, não se fez necessário o .value
     chute.value = '';//Setei dentro da caixa vazio
 }
 //////////////////////////////////////////////////////
@@ -61,26 +44,35 @@ function rodada(mensagemH1, mensagemP, nomeimg, caminhoimg)
     limpaCampo();
 }
 //////////////////////////////////////////////////////
+function inverteBotoes(off1on2)
+{
+    let onOff = off1on2;
+    if(onOff<=1)
+    {
+        let chutarOn = document.getElementById('idBotaoChute').removeAttribute('disabled');
+        let aumentarDifOff = document.getElementById('aumentarDif').setAttribute('disabled', true);//document é referencia ao HTML; getElementById, buscou um elemento específico que está com ID, nesse caso, 'aumentardif'; setAttribute, adicionamos um atributo que nesse caso é o disable, o true é para deixar o disable como VERDADEIRO
+    }
+    else
+    {
+        let chutarOff = document.getElementById('idBotaoChute').setAttribute('disabled', true);
+        let aumentarDifOn = document.getElementById('aumentarDif').removeAttribute('disabled');
+    }
+}
+//////////////////////////////////////////////////////
 function reiniciarjogo()
 {
     nivel++;
-    ndenumeroSecreto = ndenumeroSecreto * 10;
+    dificuldade = dificuldade * 10;
     numeroSecreto = gerarNumeroAleatorio();
     limpaCampo();
     tentativas = 0;
-    substituirNoHtml('p', `Qual é o número indígena? 1 a ${ndenumeroSecreto}`);
+    substituirNoHtml('p', `Qual é o número indígena? 1 a ${dificuldade}`);
     substituirNoHtml('h1', `Jogo do Índio nível ${nivel}!`);
     trocaimagem('indioserio', 'img/indioserio.png');
     checklog();
-    document.getElementById('IDbotaochute').removeAttribute('disabled');
-    document.getElementById('aumentardif').setAttribute('disabled', true);
+    inverteBotoes(1);
 }
 //////////////////////////////////////////////////////
-
-substituirNoHtml('h1', 'Jogo do Índio'); // Na função 'substituirNoHtml', onde tem 'tag' é substituído por 'h1' e onde tem 'texto' é substituído por 'Jogo do Índio'
-substituirNoHtml('title', 'Jogo Indígena');
-substituirNoHtml('p', `Qual é o número indígena? 1 a ${ndenumeroSecreto}`);
-
 function botaoChute() //Função que é ativada quando aperta o botão "chutar"
 {
     let chute = document.querySelector('input').value; //O '.valeu' serve para ser lido APENAS a informação dentro da caixa input
@@ -90,8 +82,7 @@ function botaoChute() //Função que é ativada quando aperta o botão "chutar"
     if (chute==numeroSecreto)
     {
     rodada(`Você descobriu o número! ${numeroSecreto}`, `Precisou de ${tentativas} tentativas.`, 'indiosorrindo', 'img/indiosorrindo.png');
-    document.getElementById('aumentardif').removeAttribute('disabled');//pegou um elemento do html pelo id único e removeu o atributo 'disable'
-    document.getElementById('IDbotaochute').setAttribute('disabled', true);//Desabilitei o botão de chute
+    inverteBotoes(2);
     }
     else
     {
@@ -113,6 +104,26 @@ function botaoChute() //Função que é ativada quando aperta o botão "chutar"
         }
     }
 }
+//////////////////////////////////////////////////////
+substituirNoHtml('h1', 'Jogo do Índio'); // Na função 'substituirNoHtml', onde tem 'tag' é substituído por 'h1' e onde tem 'texto' é substituído por 'Jogo do Índio'
+substituirNoHtml('title', 'Jogo Indígena');
+substituirNoHtml('p', `Qual é o número indígena? 1 a ${dificuldade}`);
+
+//***********Forma redundante*************//
+//A duas formas que usei para alterar o h1 e o title são corretas porém são repetitivas e redundantes, existe uma forma mais otimizada de repetir esses códigos que é criando uma função para eles, assim como fiz abaixo deles
+/*
+let titulo = document.querySelector('h1'); //document é menção do documento html, ou seja, fazendo uma leitura dele, querySelector é para especificar o parâmetro do html ao qual faço menção, que nesse caso é o <h1>. Em outras palavras: A variável 'titulo' é igual a <h1> no documento .html
+titulo.innerHTML = 'Jogo do Índio'; //innerHTML ou seja, dentro do HTML. No html o conteúdo da variável 'titulo' vai substituir o conteúdo do <h1>
+
+let tituloaba = document.querySelector('title');
+tituloaba.innerHTML = 'Jogo Indígena'; //eu basicamente mudei o título da página, que vai na aba do navegador. Ao invés de mudar diretamente no próprio html o fiz por aqui
+
+let paragrafo = document.querySelector('p');
+paragrafo.innerHTML = 'Qual o número indígena? 1 a 10';
+
+//***********Forma redundante*************/ //São 3 codigos (titulo, tituloaba e paragrafo) que podem todos serem resumidos em apenas uma função
+
+//A forma otimizada é criando uma função para sempre ser lida, ao invés de toda vez repetir o código inteiro, segue a função:
 //////////////////////////////////////////////////////
 
 //****************************************************************************************************************************************/
