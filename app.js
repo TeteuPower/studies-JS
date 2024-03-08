@@ -15,6 +15,9 @@ paragrafo.innerHTML = 'Qual o número indígena? 1 a 10';
 
 //A forma otimizada é criando uma função para sempre ser lida, ao invés de toda vez repetir o código inteiro, segue a função:
 ndenumeroSecreto = 100;//Dificuldade do jogo
+let numeroSecreto = gerarNumeroAleatorio(); //Aqui eu chamo a função de baixo dizendo que o numeroSecreto é IGUAL ao gerarNumeroAleatorio
+let tentativas = 0;
+let chute = document.querySelector('input').value; //O '.valeu' serve para ser lido APENAS a informação dentro da caixa input
 //////////////////////////////////////////////////////
 function substituirNoHtml (tag, texto) // 'substituirNoHtml' é o nome da função que vai ser digitado quando for ser mencionada, entre aspas o primeiro valor sera a 'tag' e o segundo o 'texto' que serão substituídos dentro da função como segue no exemplo depois da função
 {
@@ -33,25 +36,32 @@ function gerarNumeroAleatorio()
     return parseInt(Math.random() * ndenumeroSecreto +1); //o return serve para ele retornar o valor da função para a variável que a solicitou, que no caso é um número aleatório
 }
 //////////////////////////////////////////////////////
+function limpaCampo ()
+{
+    chute = document.querySelector('input');
+    chute.value = '';
+}
+//////////////////////////////////////////////////////
 function rodada(msgh1, msgp, nomeimg, caminhoimg)
 {
     substituirNoHtml('h1', msgh1);
     substituirNoHtml('p', msgp);
     trocaimagem(nomeimg, caminhoimg);
+    limpaCampo();
 }
 //////////////////////////////////////////////////////
-let numeroSecreto = gerarNumeroAleatorio(); //Aqui eu chamo a função de baixo dizendo que o numeroSecreto é IGUAL ao gerarNumeroAleatorio
-let tentativas = 0;
+
 substituirNoHtml('h1', 'Jogo do Índio'); // Na função 'substituirNoHtml', onde tem 'tag' é substituído por 'h1' e onde tem 'texto' é substituído por 'Jogo do Índio'
 substituirNoHtml('title', 'Jogo Indígena');
 substituirNoHtml('p', `Qual é o número indígena? 1 a ${ndenumeroSecreto}`);
-//////////////////////////////////////////////////////
+
 function botaoChute() //Função que é ativada quando aperta o botão "chutar"
 {
     let chute = document.querySelector('input').value; //O '.valeu' serve para ser lido APENAS a informação dentro da caixa input
     tentativas++;
-            console.log('Comparação', chute == numeroSecreto);
+            console.log('Chute', chute);
             console.log('Número Secreto', numeroSecreto);
+            console.log('Comparação', chute == numeroSecreto);
             console.log('Tentativas', tentativas);
 
     if (chute==numeroSecreto)
@@ -74,7 +84,7 @@ function botaoChute() //Função que é ativada quando aperta o botão "chutar"
         }
         if (tentativas>=3 && chute<numeroSecreto)
         {
-        rodada('O índio está ficando BRAVO',`O NÚMERO É MAIOOOR QUE ${chute}!`,'indiomuitobravo', 'img/indiomuitobravocolorido.png')
+        rodada('O índio está ficando BRAVO',`O NÚMERO É MAIOOOR QUE ${chute}!`,'indiomuitobravo', 'img/indiomuitobravocolorido.png');
         }
     }
 }
