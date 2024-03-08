@@ -25,10 +25,10 @@ function substituirNoHtml (tag, texto) // 'substituirNoHtml' é o nome da funç�
     exportar.innerHTML = texto;
 }
 //////////////////////////////////////////////////////
-function trocaimagem (imagem, caminho)
+function trocaimagem (imagem, caminhoSrc)
 {
     let novaimg = document.getElementById('indio');
-    novaimg.src = caminho;
+    novaimg.src = caminhoSrc;
 }
 //////////////////////////////////////////////////////
 function gerarNumeroAleatorio()
@@ -38,14 +38,14 @@ function gerarNumeroAleatorio()
 //////////////////////////////////////////////////////
 function limpaCampo ()
 {
-    chute = document.querySelector('input');
-    chute.value = '';
+    chute = document.querySelector('input');//Como não precisa ser lido nada, não se fez necessário o .valeu
+    chute.value = '';//Setei dentro da caixa vazio
 }
 //////////////////////////////////////////////////////
-function rodada(msgh1, msgp, nomeimg, caminhoimg)
+function rodada(mensagemH1, mensagemP, nomeimg, caminhoimg)
 {
-    substituirNoHtml('h1', msgh1);
-    substituirNoHtml('p', msgp);
+    substituirNoHtml('h1', mensagemH1);
+    substituirNoHtml('p', mensagemP);
     trocaimagem(nomeimg, caminhoimg);
     limpaCampo();
 }
