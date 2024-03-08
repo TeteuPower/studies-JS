@@ -94,6 +94,7 @@ h1 {
     font-family: 'Chakra Petch', sans-serif;
     font-size: 72px;
     padding-bottom: 3rem;
+    text-align: center;
 }
 
 p,
@@ -104,6 +105,7 @@ button {
 .texto__paragrafo {
     font-size: 32px;
     font-weight: 400;
+    text-align: center;
 }
 
 button:disabled {
