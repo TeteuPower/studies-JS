@@ -14,10 +14,21 @@ paragrafo.innerHTML = 'Qual o número indígena? 1 a 10';
 //***********Forma redundante*************/ //São 3 codigos (titulo, tituloaba e paragrafo) que podem todos serem resumidos em apenas uma função
 
 //A forma otimizada é criando uma função para sempre ser lida, ao invés de toda vez repetir o código inteiro, segue a função:
-ndenumeroSecreto = 100;//Dificuldade do jogo
+
+ndenumeroSecreto = 10;//Dificuldade do jogo
 let numeroSecreto = gerarNumeroAleatorio(); //Aqui eu chamo a função de baixo dizendo que o numeroSecreto é IGUAL ao gerarNumeroAleatorio
 let tentativas = 0;
 let chute = document.querySelector('input').value; //O '.valeu' serve para ser lido APENAS a informação dentro da caixa input
+let nivel = 1;
+//////////////////////////////////////////////////////
+function checklog()
+{
+    chute = document.querySelector('input').value;
+    console.log('Chute', chute);
+    console.log('Número Secreto', numeroSecreto);
+    console.log('Comparação', chute == numeroSecreto);
+    console.log('Tentativas', tentativas);
+}
 //////////////////////////////////////////////////////
 function substituirNoHtml (tag, texto) // 'substituirNoHtml' é o nome da função que vai ser digitado quando for ser mencionada, entre aspas o primeiro valor sera a 'tag' e o segundo o 'texto' que serão substituídos dentro da função como segue no exemplo depois da função
 {
@@ -27,7 +38,7 @@ function substituirNoHtml (tag, texto) // 'substituirNoHtml' é o nome da funç�
 //////////////////////////////////////////////////////
 function trocaimagem (imagem, caminhoSrc)
 {
-    let novaimg = document.getElementById('indio');
+    let novaimg = document.getElementById('indio');//o getElementById é para puxar o elemento com ID 'indio' lá do HTML
     novaimg.src = caminhoSrc;
 }
 //////////////////////////////////////////////////////
@@ -50,6 +61,21 @@ function rodada(mensagemH1, mensagemP, nomeimg, caminhoimg)
     limpaCampo();
 }
 //////////////////////////////////////////////////////
+function reiniciarjogo()
+{
+    nivel++;
+    ndenumeroSecreto = ndenumeroSecreto * 10;
+    numeroSecreto = gerarNumeroAleatorio();
+    limpaCampo();
+    tentativas = 0;
+    substituirNoHtml('p', `Qual é o número indígena? 1 a ${ndenumeroSecreto}`);
+    substituirNoHtml('h1', `Jogo do Índio nível ${nivel}!`);
+    trocaimagem('indioserio', 'img/indioserio.png');
+    checklog();
+    document.getElementById('IDbotaochute').removeAttribute('disabled');
+    document.getElementById('aumentardif').setAttribute('disabled', true);
+}
+//////////////////////////////////////////////////////
 
 substituirNoHtml('h1', 'Jogo do Índio'); // Na função 'substituirNoHtml', onde tem 'tag' é substituído por 'h1' e onde tem 'texto' é substituído por 'Jogo do Índio'
 substituirNoHtml('title', 'Jogo Indígena');
@@ -59,14 +85,13 @@ function botaoChute() //Função que é ativada quando aperta o botão "chutar"
 {
     let chute = document.querySelector('input').value; //O '.valeu' serve para ser lido APENAS a informação dentro da caixa input
     tentativas++;
-            console.log('Chute', chute);
-            console.log('Número Secreto', numeroSecreto);
-            console.log('Comparação', chute == numeroSecreto);
-            console.log('Tentativas', tentativas);
+    checklog();
 
     if (chute==numeroSecreto)
     {
     rodada(`Você descobriu o número! ${numeroSecreto}`, `Precisou de ${tentativas} tentativas.`, 'indiosorrindo', 'img/indiosorrindo.png');
+    document.getElementById('aumentardif').removeAttribute('disabled');//pegou um elemento do html pelo id único e removeu o atributo 'disable'
+    document.getElementById('IDbotaochute').setAttribute('disabled', true);//Desabilitei o botão de chute
     }
     else
     {

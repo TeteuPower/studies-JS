@@ -22,10 +22,10 @@
                     <h1></h1>
                     <p class="texto__paragrafo"></p>
                 </div>
-                <input type="number" min="1" max="10" class="container__input"> <!-- É a caixa para inserção de informação -->
+                <input type="number" min="1" max="10" class="container__input"> <!-- É a caixa para inserção dos números -->
                 <div class="chute container__botoes">
-                    <button onclick="botaoChute()" class="container__botao">Chutar</button> <!-- button onclick, ou seja, ao clique precisa ser atribuída uma ação, que é a "verificarChute" -->
-                    <button onclick="" id="reiniciar" class="container__botao" disabled>Novo jogo</button>
+                    <button onclick="botaoChute()" id="IDbotaochute" class="container__botao">Chutar</button> <!-- button onclick, criei um botão porém ser atribuída uma ação, que é a "verificarChute" -->
+                    <button onclick="reiniciarjogo()" id="aumentardif" class="container__botao" disabled>Aumentar dificuldade</button>
                 </div>
             </div>
             <img id="indio" src="./img/indioserio.png" alt="Desenho de um índio" class="container__imagem-pessoa" />
