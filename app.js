@@ -49,17 +49,17 @@ function inverteBotoes(off1on2)
     let onOff = off1on2;
     if(onOff<=1)
     {
-        let chutarOn = document.getElementById('idBotaoChute').removeAttribute('disabled');
-        let aumentarDifOff = document.getElementById('aumentarDif').setAttribute('disabled', true);//document é referencia ao HTML; getElementById, buscou um elemento específico que está com ID, nesse caso, 'aumentardif'; setAttribute, adicionamos um atributo que nesse caso é o disable, o true é para deixar o disable como VERDADEIRO
+        let chutarOn = document.getElementById('idBotaoEsq').removeAttribute('disabled');
+        let aumentarDifOff = document.getElementById('idBotaoDir').setAttribute('disabled', true);//document é referencia ao HTML; getElementById, buscou um elemento específico que está com ID, nesse caso, 'aumentardif'; setAttribute, adicionamos um atributo que nesse caso é o disable, o true é para deixar o disable como VERDADEIRO
     }
     else
     {
-        let chutarOff = document.getElementById('idBotaoChute').setAttribute('disabled', true);
-        let aumentarDifOn = document.getElementById('aumentarDif').removeAttribute('disabled');
+        let chutarOff = document.getElementById('idBotaoEsq').setAttribute('disabled', true);
+        let aumentarDifOn = document.getElementById('idBotaoDir').removeAttribute('disabled');
     }
 }
 //////////////////////////////////////////////////////
-function reiniciarjogo()
+function botaoDir()
 {
     nivel++;
     dificuldade = dificuldade * 10;
@@ -73,7 +73,7 @@ function reiniciarjogo()
     inverteBotoes(1);
 }
 //////////////////////////////////////////////////////
-function botaoChute() //Função que é ativada quando aperta o botão "chutar"
+function botaoEsq() //Função que é ativada quando aperta o botão "chutar"
 {
     let chute = document.querySelector('input').value; //O '.valeu' serve para ser lido APENAS a informação dentro da caixa input
     tentativas++;
