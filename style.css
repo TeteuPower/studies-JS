@@ -78,11 +78,17 @@ body::before {
     border-radius: 16px;
     background-color: #FFF;
     border: none;
+    margin: 5px;
     color: #1875E8;
     padding: 2rem;
     font-size: 24px;
     font-weight: 700;
     font-family: 'Inter', sans-serif;
+    text-align: center;
+}
+
+.container__divInput {
+    display: flex;
 }
 
 .container__botoes {

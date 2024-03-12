@@ -22,13 +22,15 @@
                     <h1 id="titulo"></h1>
                     <p id="paragrafo" class="texto__paragrafo"></p>
                 </div>
-                <input type="number" min="1" max="10" class="container__input"> <!-- É a caixa para inserção dos números -->
-                <div class="chute container__botoes">
-                    <button onclick="botaoEsq()" id="idBotaoEsq" class="container__botao"></button> <!-- button onclick, criei um botão porém ser atribuída uma ação, que é a "verificarChute" -->
-                    <button onclick="botaoDir()" id="idBotaoDir" class="container__botao" disabled></button>
-                </div>
+                    <div id="input" class="container__divInput">
+                        <!--<input type="number" min="1" max="10" class="container__input"> (É a caixa para inserção dos números) -->
+                    </div>
+                    <div class="chute container__botoes">
+                        <button onclick="botaoEsq()" id="idBotaoEsq" class="container__botao"></button> <!-- button onclick, criei um botão porém ser atribuída uma ação, que é a "verificarChute" -->
+                        <button onclick="botaoDir()" id="idBotaoDir" class="container__botao" disabled></button>
+                    </div>
             </div>
-            <img id="idImgPrincipal" src="/img/indioserio.png" alt="Desenho de um índio" class="container__imagem-pessoa" />
+            <img id="idImgPrincipal" src="" alt="Desenho de um índio" class="container__imagem-pessoa" />
         </div>
     </div>
     <script src="app.js" defer></script>

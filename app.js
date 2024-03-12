@@ -26,18 +26,18 @@ function gerarNumeroAleatorio()
     return parseInt(Math.random() * dificuldade +1); //o return serve para ele retornar o valor da função para a variável que a solicitou, que no caso é um número aleatório
 }
 //////////////////////////////////////////////////////
-function limpaCampo ()
+function limpaCampo (input)
 {
-    chute = document.querySelector('input');//Como não precisa ser lido nada, não se fez necessário o .value
-    chute.value = '';//Setei dentro da caixa vazio
+    informacao = document.getElementById(input);//Como não precisa ser lido nada, não se fez necessário o .value
+    informacao.value = '';//Setei dentro da caixa vazio
 }
 //////////////////////////////////////////////////////
-function rodada(mensagemH1, mensagemP, caminhoimg)
+function rodada(mensagemH1, mensagemP, caminhoImg, limpaInput)
 {
     substituirNoHtml('titulo', mensagemH1);
     substituirNoHtml('paragrafo', mensagemP);
-    trocaimagem(caminhoimg);
-    limpaCampo();
+    trocaimagem(caminhoImg);
+    limpaCampo(limpaInput);
 }
 //////////////////////////////////////////////////////
 function inverteBotoes(onOff123)
@@ -69,14 +69,26 @@ function textos(aba,titulo,paragrafo,botaoesq,botaodir)
     substituirNoHtml('idBotaoDir', botaodir);
 }
 //////////////////////////////////////////////////////
+function input(tipo, idInput, mensagem)
+{
+    let input = document.createElement("input");
+    input.type = tipo;
+    input.id = idInput
+    input.placeholder = mensagem;
+    input.className = "container__input";
+    document.getElementById('input').appendChild(input);
+}
+//////////////////////////////////////////////////////
 
 /****************************************************************************************************************************************/
 //Jogo do Índio (Descobrir o número)
-
+/*
+input('number','chute','Insira um número')
+trocaimagem('img/indioserio.png');
 dificuldade = 10;//Dificuldade do jogo
 let numeroSecreto = gerarNumeroAleatorio(); //criei o número secreto, sendo ele o produto da função gerarNumeroAleatorio
 let tentativas = 0;
-let chute = document.querySelector('input').value; //O '.valeu' serve para ser lido APENAS a informação dentro da caixa input
+let chute = document.getElementById('chute').value; //O '.valeu' serve para ser lido APENAS a informação dentro da caixa input
 let nivel = 1;
 textos('Jogo Indígena','Jogo do Índio',`Qual é o número indígena? 1 a ${dificuldade}`,'Chutar','Aumentar Dificuldade');
 
@@ -89,26 +101,26 @@ function botaoEsq() //Função que é ativada quando aperta o botão "chutar"
 
     if (chute==numeroSecreto)
     {
-    rodada(`Você descobriu o número! ${numeroSecreto}`, `Precisou de ${tentativas} tentativas.`,'img/indiosorrindo.png');
+    rodada(`Você descobriu o número! ${numeroSecreto}`, `Precisou de ${tentativas} tentativas.`,'img/indiosorrindo.png','chute');
     inverteBotoes(2);
     }
     else
     {
         if(chute>numeroSecreto)
         {
-        rodada('Poxa vida, você errou',`O número é MENOR que ${chute}`,'img/indiobravo.png');
+        rodada('Poxa vida, você errou',`O número é MENOR que ${chute}`,'img/indiobravo.png','chute');
         }
         else
         {
-        rodada('Poxa vida, você errou',`O número é MAIOR que ${chute}`,'img/indiobravo.png');
+        rodada('Poxa vida, você errou',`O número é MAIOR que ${chute}`,'img/indiobravo.png','chute');
         }
         if (tentativas>=3 && chute>numeroSecreto)
         {
-        rodada('O índio está ficando BRAVO',`O NÚMERO É MENOOOR QUE ${chute}!`,'/img/indiomuitobravocolorido.png');
+        rodada('O índio está ficando BRAVO',`O NÚMERO É MENOOOR QUE ${chute}!`,'/img/indiomuitobravocolorido.png','chute');
         }
         if (tentativas>=3 && chute<numeroSecreto)
         {
-        rodada('O índio está ficando BRAVO',`O NÚMERO É MAIOOOR QUE ${chute}!`,'/img/indiomuitobravocolorido.png');
+        rodada('O índio está ficando BRAVO',`O NÚMERO É MAIOOOR QUE ${chute}!`,'/img/indiomuitobravocolorido.png','chute');
         }
     }
 }
@@ -119,8 +131,7 @@ function botaoDir()
     dificuldade = dificuldade * 10;
     tentativas = 0;
     numeroSecreto = gerarNumeroAleatorio();
-    limpaCampo();
-    rodada(`Jogo do Índio, agora nível ${nivel}!`,`Qual é o número indígena? 1 a ${dificuldade}`,'/img/indioserio.png');
+    rodada(`Jogo do Índio, agora nível ${nivel}!`,`Qual é o número indígena? 1 a ${dificuldade}`,'/img/indioserio.png','chute');
     checklog();
     inverteBotoes(1);
 }
@@ -130,6 +141,8 @@ function botaoDir()
 /****************************************************************************************************************************************/
 //Sistema para dizer qual o número maior
 /*
+input('number','campo','Insira o número');
+trocaimagem('img/indioserio.png');
 textos('Ferramenta do Índio','Índio Matemático!','Insira dois números e o índio dirá qual é o maior!','Inserir','Reset');
 let apertouBotao = 0
 let numero1 = 0;
@@ -139,15 +152,15 @@ function botaoEsq()
     apertouBotao++;
     if(apertouBotao==1)
     {
-    numero1 = parseInt(document.querySelector('input').value);
+    numero1 = parseInt(document.getElementById('campo').value);
     textos('Ferramenta do Índio','Índio Matemático!','Agora insira o segundo número','Inserir','Reset');
-    limpaCampo('');
+    limpaCampo('campo');
     }
     if(apertouBotao==2)
     {
-    let numero2 = parseInt(document.querySelector('input').value);
+    let numero2 = parseInt(document.getElementById('campo').value);
     trocaimagem('img/indiosorrindo.png');
-    limpaCampo('');
+    limpaCampo('campo');
     inverteBotoes(2);
         if(numero1>numero2)
         {
@@ -179,6 +192,8 @@ function botaoDir()
 /****************************************************************************************************************************************/
 //Sistema que tira média dos números
 /*
+input('number', 'campo', 'Insira o número');
+trocaimagem('img/indioserio.png');
 textos('Ferramenta do Índio','O Índio Calculista!','Deseja calcular a média de quantos números?','Próximo','Reset');
 let apertouBotao = -1; 
 let soma = 0;
@@ -193,26 +208,26 @@ function botaoEsq()
 
     if (apertouBotao === 0)
     {
-        quantidadeNumeros = parseInt(document.querySelector('input').value);
+        quantidadeNumeros = parseInt(document.getElementById('campo').value);
         textos('Ferramenta do Índio', `Média de ${quantidadeNumeros} números.`, `Digite o ${digiteNumero}º número.`, 'Próximo', 'Reset');
         digiteNumero++
-        limpaCampo('');
+        limpaCampo('campo');
     }
     if (apertouBotao > 1)
     {
-        let numero = parseInt(document.querySelector('input').value);
+        let numero = parseInt(document.getElementById('campo').value);
         soma += numero;
         textos('Ferramenta do Índio', `Média de ${quantidadeNumeros} números.`, `Digite o ${digiteNumero}º número. A soma está em ${soma}.`, 'Próximo', 'Reset');
         digiteNumero++;
-        limpaCampo('');
+        limpaCampo('campo');
     }
     if (contador === quantidadeNumeros)
     {
         let media = soma / quantidadeNumeros;
-        textos('Ferramenta do Índio', `O Índio diz que a média dos ${quantidadeNumeros} números é ${media}`, `A soma deu ${soma}; Aperte em RESET para recomeçar`, 'Próximo', 'Reset');
+        textos('Ferramenta do Índio', `A média dos ${quantidadeNumeros} números é ${media}`, `A soma deu ${soma}; Aperte em RESET para recomeçar`, 'Próximo', 'Reset');
         trocaimagem('img/indiosorrindo.png');
         inverteBotoes(2);
-        limpaCampo('');
+        limpaCampo('campo');
     }
 }
 
@@ -224,7 +239,7 @@ function botaoDir()
     quantidadeNumeros = 0;
     digiteNumero = 1;
     inverteBotoes(1);
-    limpaCampo('');
+    limpaCampo('campo');
     textos('Ferramenta do Índio','O Índio Calculista!','Digite a quantidade de números que você deseja tirar a média','Próximo','Reset');
     trocaimagem('img/indioserio.png');
 }
@@ -246,4 +261,31 @@ paragrafo.innerHTML = 'Qual o número indígena? 1 a 10';
 //São 3 codigos (titulo, tituloaba e paragrafo) que podem todos serem resumidos em apenas uma função
 //A forma otimizada é criando uma função para sempre ser lida, ao invés de toda vez repetir o código inteiro... Nome da função que criamos é substituirNoHtml
 /***********Forma redundante*************/
+/****************************************************************************************************************************************/
+//Sistema de cálculo IMC
+/*
+trocaimagem('img/indiomalhado.png');
+textos('Calculo IMC', 'Personal-Trainer Índio', 'Insira as informações para o índio calcular o seu IMC', 'Calcular', 'Reset');
+
+input('text','altura','Altura em cm');
+input('text','peso','Peso em Kg');
+
+function botaoEsq()
+{
+    let altura = parseInt(document.getElementById('altura').value);
+    let peso = parseInt(document.getElementById('peso').value);
+    console.log('altura',altura);
+    console.log('peso',peso);
+    let imc = 10000*[peso / (altura*altura)];
+    rodada('Personal Índio',`Seu IMC é ${imc.toFixed(2)}`,'img/indiomalhado2.png','altura');
+    limpaCampo('peso');
+    inverteBotoes(2);
+}
+function botaoDir()
+{
+    textos('Calculo IMC', 'Personal-Trainer Índio', 'Insira as informações para o índio calcular o seu IMC', 'Calcular', 'Reset');
+    inverteBotoes(1);
+}
+
+/****************************************************************************************************************************************/
 /****************************************************************************************************************************************/
