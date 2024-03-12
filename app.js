@@ -79,18 +79,23 @@ function input(tipo, idInput, mensagem)
     document.getElementById('input').appendChild(input);
 }
 //////////////////////////////////////////////////////
+function apresentacao(aba,tituloH1,paragrafo,botaoesq,botaodir,tipoInput,idInput,mensagemInput,caminhoSrc)
+{
+    textos(aba,tituloH1,paragrafo,botaoesq,botaodir);
+    input(tipoInput,idInput,mensagemInput);
+    trocaimagem(caminhoSrc);
+}
+//////////////////////////////////////////////////////
 
 /****************************************************************************************************************************************/
 //Jogo do Índio (Descobrir o número)
 /*
-input('number','chute','Insira um número')
-trocaimagem('img/indioserio.png');
 dificuldade = 10;//Dificuldade do jogo
+apresentacao('Jogo Indígena','Jogo do Índio',`Qual é o número indígena? 1 a ${dificuldade}`,'Chutar','Aumentar Dificuldade','number','chute','Insira um número','img/indioserio.png');
 let numeroSecreto = gerarNumeroAleatorio(); //criei o número secreto, sendo ele o produto da função gerarNumeroAleatorio
 let tentativas = 0;
 let chute = document.getElementById('chute').value; //O '.valeu' serve para ser lido APENAS a informação dentro da caixa input
 let nivel = 1;
-textos('Jogo Indígena','Jogo do Índio',`Qual é o número indígena? 1 a ${dificuldade}`,'Chutar','Aumentar Dificuldade');
 
 //////////////////////////////////////////////////////
 function botaoEsq() //Função que é ativada quando aperta o botão "chutar"
@@ -141,9 +146,7 @@ function botaoDir()
 /****************************************************************************************************************************************/
 //Sistema para dizer qual o número maior
 /*
-input('number','campo','Insira o número');
-trocaimagem('img/indioserio.png');
-textos('Ferramenta do Índio','Índio Matemático!','Insira dois números e o índio dirá qual é o maior!','Inserir','Reset');
+apresentacao('Ferramenta do Índio','Índio Matemático!','Insira dois números e o índio dirá qual é o maior!','Inserir','Reset','number','campo','Insira o número','img/indioserio.png');
 let apertouBotao = 0
 let numero1 = 0;
 let numero2 = 0;
@@ -192,9 +195,7 @@ function botaoDir()
 /****************************************************************************************************************************************/
 //Sistema que tira média dos números
 /*
-input('number', 'campo', 'Insira o número');
-trocaimagem('img/indioserio.png');
-textos('Ferramenta do Índio','O Índio Calculista!','Deseja calcular a média de quantos números?','Próximo','Reset');
+apresentacao('Ferramenta do Índio','O Índio Calculista!','Deseja calcular a média de quantos números?','Próximo','Reset','number', 'campo', 'Insira o número','img/indioserio.png');
 let apertouBotao = -1; 
 let soma = 0;
 let contador = -2;
@@ -245,7 +246,49 @@ function botaoDir()
 }
 //****************************************************************************************************************************************/
 /****************************************************************************************************************************************/
-//Forma redundante de substituir texto no html
+//Função que calcula fatorial
+
+
+/****************************************************************************************************************************************/
+//Sistema de cálculo IMC
+
+apresentacao('Calculo IMC', 'Índio Trainer', 'Insira as informações para o índio calcular o seu IMC', 'Calcular', 'Reset','text','altura','Altura em cm','img/indiomalhado.png');
+input('text','peso','Peso em Kg');
+
+function botaoEsq()
+{
+    let altura = parseInt(document.getElementById('altura').value);
+    let peso = parseInt(document.getElementById('peso').value);
+    let imc = 10000*[peso / (altura*altura)];
+    if (imc<18.5) //magreza
+    {
+        rodada('MAGREZA', `Seu IMC é ${imc.toFixed(2)}`,'img/indiomagro.png','altura');
+        limpaCampo('peso');
+        inverteBotoes(2);
+    }
+    if (imc>18.5 && imc<24.9)//normal
+    {
+        rodada('NORMAL', `Seu IMC é ${imc.toFixed(2)}`,'img/indiosorrindo.png','altura');
+        limpaCampo('peso');
+        inverteBotoes(2);
+    }
+    if (imc>24.9)//obesidade
+    {
+        rodada('OBESIDADE', `Seu IMC é ${imc.toFixed(2)}`,'img/indiogordo.png','altura');
+        limpaCampo('peso');
+        inverteBotoes(2);
+    }
+}
+function botaoDir()
+{
+    rodada('Índio Trainer', 'Insira as informações para o índio calcular o seu IMC','img/indiomalhado.png','altura');
+    limpaCampo('peso');
+    inverteBotoes(1);
+}
+
+/****************************************************************************************************************************************/
+/****************************************************************************************************************************************/
+//Como fazer uma função
 /*
 //A duas formas que usei para alterar o h1 e o title são corretas porém são repetitivas e redundantes, existe uma forma mais otimizada de repetir esses códigos que é criando uma função para eles, assim como fiz abaixo deles
 
@@ -261,31 +304,3 @@ paragrafo.innerHTML = 'Qual o número indígena? 1 a 10';
 //São 3 codigos (titulo, tituloaba e paragrafo) que podem todos serem resumidos em apenas uma função
 //A forma otimizada é criando uma função para sempre ser lida, ao invés de toda vez repetir o código inteiro... Nome da função que criamos é substituirNoHtml
 /***********Forma redundante*************/
-/****************************************************************************************************************************************/
-//Sistema de cálculo IMC
-/*
-trocaimagem('img/indiomalhado.png');
-textos('Calculo IMC', 'Personal-Trainer Índio', 'Insira as informações para o índio calcular o seu IMC', 'Calcular', 'Reset');
-
-input('text','altura','Altura em cm');
-input('text','peso','Peso em Kg');
-
-function botaoEsq()
-{
-    let altura = parseInt(document.getElementById('altura').value);
-    let peso = parseInt(document.getElementById('peso').value);
-    console.log('altura',altura);
-    console.log('peso',peso);
-    let imc = 10000*[peso / (altura*altura)];
-    rodada('Personal Índio',`Seu IMC é ${imc.toFixed(2)}`,'img/indiomalhado2.png','altura');
-    limpaCampo('peso');
-    inverteBotoes(2);
-}
-function botaoDir()
-{
-    textos('Calculo IMC', 'Personal-Trainer Índio', 'Insira as informações para o índio calcular o seu IMC', 'Calcular', 'Reset');
-    inverteBotoes(1);
-}
-
-/****************************************************************************************************************************************/
-/****************************************************************************************************************************************/
