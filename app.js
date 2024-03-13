@@ -247,7 +247,7 @@ function botaoDir()
 //****************************************************************************************************************************************/
 /****************************************************************************************************************************************/
 //Função que calcula fatorial
-
+/*
 apresentacao('Fatorial','Índio Matemático!','Digite um número para o índio calcular o seu fatorial!','Calcular','Reset','number','caixa','Número','img/indioserio.png');
 function botaoEsq()
 {
@@ -266,6 +266,7 @@ function botaoDir()
     rodada('Índio Matemático!','Digite o número para o índio calcular o seu fatorial!','img/indioserio.png','caixa');
     inverteBotoes(1);
 }
+/****************************************************************************************************************************************/
 /****************************************************************************************************************************************/
 //Sistema de cálculo IMC
 /*
@@ -299,6 +300,26 @@ function botaoDir()
 {
     rodada('Índio Trainer', 'Insira as informações para o índio calcular o seu IMC','img/indiomalhado.png','altura');
     limpaCampo('peso');
+    inverteBotoes(1);
+}
+
+/****************************************************************************************************************************************/
+/****************************************************************************************************************************************/
+//Sistema de conversão REAL->Dolar->REAL
+/*
+apresentacao('Dólar Real','Converter para dólar','Digite o valor em reais:','Converter','Nova cotação','number','caixaReal','R$:','img/indiorico.png');
+
+function botaoEsq()
+{
+    let reais = parseFloat(document.getElementById('caixaReal').value);
+    let dolar = reais / 4.8;
+    let palavraDolar = dolar==1 ? 'Dólar' : 'Dólares';
+    rodada(`${dolar.toFixed(2)} ${palavraDolar}`,'Faça uma nova cotação','img/indioricosorrindo.png','caixaReal');
+    inverteBotoes('2');
+}
+function botaoDir()
+{
+    rodada('Converter para dólar','Digite o valor em reais:','img/indiorico.png','caixaReal');
     inverteBotoes(1);
 }
 
