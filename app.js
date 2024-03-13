@@ -32,12 +32,19 @@ function limpaCampo (input)
     informacao.value = '';//Setei dentro da caixa vazio
 }
 //////////////////////////////////////////////////////
-function rodada(mensagemH1, mensagemP, caminhoImg, limpaInput)
+function rodada(mensagemH1, mensagemP, caminhoImg, limpacampo)
 {
     substituirNoHtml('titulo', mensagemH1);
     substituirNoHtml('paragrafo', mensagemP);
     trocaimagem(caminhoImg);
-    limpaCampo(limpaInput);
+    limpaCampo(limpacampo);
+}
+//////////////////////////////////////////////////////
+function rodada2(mensagemH1, mensagemP, caminhoImg, limpacampo)
+{
+    substituirNoHtml('titulo', mensagemH1);
+    substituirNoHtml('paragrafo', mensagemP);
+    trocaimagem(caminhoImg);
 }
 //////////////////////////////////////////////////////
 function inverteBotoes(onOff123)
@@ -79,6 +86,12 @@ function input(tipo, idInput, mensagem)
     document.getElementById('input').appendChild(input);
 }
 //////////////////////////////////////////////////////
+function removeInput(idInput)
+{
+    let removeinput = document.getElementById(idInput);
+    removeinput.parentNode.removeChild(removeinput);
+}
+//////////////////////////////////////////////////////
 function apresentacao(aba,tituloH1,paragrafo,botaoesq,botaodir,tipoInput,idInput,mensagemInput,caminhoSrc)
 {
     textos(aba,tituloH1,paragrafo,botaoesq,botaodir);
@@ -100,14 +113,14 @@ let nivel = 1;
 //////////////////////////////////////////////////////
 function botaoEsq() //Função que é ativada quando aperta o botão "chutar"
 {
-    let chute = document.querySelector('input').value; //O '.valeu' serve para ser lido APENAS a informação dentro da caixa input
+    let chute = document.getElementById('chute').value; //O '.valeu' serve para ser lido APENAS a informação dentro da caixa input
     tentativas++;
-    checklog();
 
     if (chute==numeroSecreto)
     {
     rodada(`Você descobriu o número! ${numeroSecreto}`, `Precisou de ${tentativas} tentativas.`,'img/indiosorrindo.png','chute');
     inverteBotoes(2);
+    removeInput('chute');
     }
     else
     {
@@ -136,9 +149,11 @@ function botaoDir()
     dificuldade = dificuldade * 10;
     tentativas = 0;
     numeroSecreto = gerarNumeroAleatorio();
-    rodada(`Jogo do Índio, agora nível ${nivel}!`,`Qual é o número indígena? 1 a ${dificuldade}`,'/img/indioserio.png','chute');
-    checklog();
+    substituirNoHtml('titulo', `Jogo do Índio, agora nível ${nivel}!`);
+    substituirNoHtml('paragrafo', `Qual é o número indígena? 1 a ${dificuldade}`);
+    trocaimagem('/img/indioserio.png');
     inverteBotoes(1);
+    input('number','chute','Insira um número')
 }
 //////////////////////////////////////////////////////
 
@@ -163,7 +178,7 @@ function botaoEsq()
     {
     let numero2 = parseInt(document.getElementById('campo').value);
     trocaimagem('img/indiosorrindo.png');
-    limpaCampo('campo');
+    removeInput('campo');
     inverteBotoes(2);
         if(numero1>numero2)
         {
@@ -189,6 +204,7 @@ function botaoDir()
     textos('Ferramenta do Índio','Índio Matemático!','Insira dois números e o índio dirá qual é o maior!','Inserir','Reset');
     inverteBotoes(1);
     trocaimagem('img/indioserio.png');
+    input('number','campo','Insira o número');
 }
 
 //****************************************************************************************************************************************/
@@ -228,7 +244,7 @@ function botaoEsq()
         textos('Ferramenta do Índio', `A média dos ${quantidadeNumeros} números é ${media}`, `A soma deu ${soma}; Aperte em RESET para recomeçar`, 'Próximo', 'Reset');
         trocaimagem('img/indiosorrindo.png');
         inverteBotoes(2);
-        limpaCampo('campo');
+        removeInput('campo');
     }
 }
 
@@ -240,7 +256,7 @@ function botaoDir()
     quantidadeNumeros = 0;
     digiteNumero = 1;
     inverteBotoes(1);
-    limpaCampo('campo');
+    input('number','campo','Insira o número:');
     textos('Ferramenta do Índio','O Índio Calculista!','Digite a quantidade de números que você deseja tirar a média','Próximo','Reset');
     trocaimagem('img/indioserio.png');
 }
@@ -248,7 +264,7 @@ function botaoDir()
 /****************************************************************************************************************************************/
 //Função que calcula fatorial
 /*
-apresentacao('Fatorial','Índio Matemático!','Digite um número para o índio calcular o seu fatorial!','Calcular','Reset','number','caixa','Número','img/indioserio.png');
+apresentacao('Fatorial','Índio Matemático!','Digite um número para o índio calcular o seu fatorial!','Calcular','Reset','number','caixa','Digite o número:','img/indioserio.png');
 function botaoEsq()
 {
     function fatorial(numero)
@@ -258,12 +274,14 @@ function botaoEsq()
     }
     let numeroNaCaixa = document.getElementById('caixa').value;
     let resultado = fatorial(numeroNaCaixa);
-    rodada(`Resultado é ${resultado}`,`O Índio calculou o fatorial de ${numeroNaCaixa}`,'img/indiosorrindo.png','caixa');
+    rodada2(`Resultado é ${resultado}`,`O Índio calculou o fatorial de ${numeroNaCaixa}`,'img/indiosorrindo.png');
+    removeInput('caixa');
     inverteBotoes(2);
 }
 function botaoDir()
 {
-    rodada('Índio Matemático!','Digite o número para o índio calcular o seu fatorial!','img/indioserio.png','caixa');
+    rodada2('Índio Matemático!','Digite o número para o índio calcular o seu fatorial!','img/indioserio.png','caixa');
+    input('number','caixa','Digite o número:');
     inverteBotoes(1);
 }
 /****************************************************************************************************************************************/
@@ -280,26 +298,30 @@ function botaoEsq()
     if (imc<18.5) //magreza
     {
         rodada('MAGREZA', `Seu IMC é ${imc.toFixed(2)}`,'img/indiomagro.png','altura');
-        limpaCampo('peso');
+        removeInput('altura');
+        removeInput('peso');
         inverteBotoes(2);
     }
     if (imc>18.5 && imc<24.9)//normal
     {
         rodada('NORMAL', `Seu IMC é ${imc.toFixed(2)}`,'img/indiosorrindo.png','altura');
-        limpaCampo('peso');
+        removeInput('altura');
+        removeInput('peso');
         inverteBotoes(2);
     }
     if (imc>24.9)//obesidade
     {
         rodada('OBESIDADE', `Seu IMC é ${imc.toFixed(2)}`,'img/indiogordo.png','altura');
-        limpaCampo('peso');
+        removeInput('altura');
+        removeInput('peso');
         inverteBotoes(2);
     }
 }
 function botaoDir()
 {
-    rodada('Índio Trainer', 'Insira as informações para o índio calcular o seu IMC','img/indiomalhado.png','altura');
-    limpaCampo('peso');
+    rodada2('Índio Trainer', 'Insira as informações para o índio calcular o seu IMC','img/indiomalhado.png');
+    input('number','altura','Altura em cm');
+    input('number','peso','Peso em Kg');
     inverteBotoes(1);
 }
 
@@ -316,14 +338,45 @@ function botaoEsq()
     let palavraDolar = dolar==1 ? 'Dólar' : 'Dólares';
     rodada(`${dolar.toFixed(2)} ${palavraDolar}`,'Faça uma nova cotação','img/indioricosorrindo.png','caixaReal');
     inverteBotoes('2');
+    removeInput('caixaReal');
 }
 function botaoDir()
 {
+    input('number','caixaReal','R$');
     rodada('Converter para dólar','Digite o valor em reais:','img/indiorico.png','caixaReal');
     inverteBotoes(1);
 }
 
 /****************************************************************************************************************************************/
+/****************************************************************************************************************************************/
+//Índio construtor
+
+apresentacao('Índio Engenheiro','Cálculo de área e perímetro','Preencha as informações em METROS:','Calcular','Reiniciar','number','largura','Largura:','img/indioengenheiro.png');
+input('number','comprimento','Comprimento:');
+function botaoEsq()
+{
+    inverteBotoes(2);
+    let largura = parseFloat(document.getElementById('largura').value);
+    let comprimento = parseFloat(document.getElementById('comprimento').value);
+    let perimetro = (2*largura)+(2*comprimento);
+    let area = (largura*comprimento);
+    removeInput('largura');
+    removeInput('comprimento');
+    console.log(perimetro,area);
+    substituirNoHtml('titulo', `São ${area}m² de área e ${perimetro}m de perímetro!`);
+    substituirNoHtml('paragrafo', 'Pressione reiniciar');
+    trocaimagem('img/indioengenheirosorrindo.png');
+}
+function botaoDir()
+{
+    inverteBotoes(1);
+    input('number','largura','Largura:');
+    input('number','comprimento','Comprimento:');
+    substituirNoHtml('titulo','Cálculo de área e perímetro');
+    substituirNoHtml('paragrafo', 'Preencha as informações em METROS');
+    trocaimagem('img/indioengenheiro.png');
+}
+
 /****************************************************************************************************************************************/
 //Como fazer uma função
 /*
