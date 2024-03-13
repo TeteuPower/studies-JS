@@ -248,13 +248,29 @@ function botaoDir()
 /****************************************************************************************************************************************/
 //Função que calcula fatorial
 
-
+apresentacao('Fatorial','Índio Matemático!','Digite um número para o índio calcular o seu fatorial!','Calcular','Reset','number','caixa','Número','img/indioserio.png');
+function botaoEsq()
+{
+    function fatorial(numero)
+    {
+        if (numero === 0 || numero === 1) return 1;
+        return numero * fatorial(numero - 1);
+    }
+    let numeroNaCaixa = document.getElementById('caixa').value;
+    let resultado = fatorial(numeroNaCaixa);
+    rodada(`Resultado é ${resultado}`,`O Índio calculou o fatorial de ${numeroNaCaixa}`,'img/indiosorrindo.png','caixa');
+    inverteBotoes(2);
+}
+function botaoDir()
+{
+    rodada('Índio Matemático!','Digite o número para o índio calcular o seu fatorial!','img/indioserio.png','caixa');
+    inverteBotoes(1);
+}
 /****************************************************************************************************************************************/
 //Sistema de cálculo IMC
-
+/*
 apresentacao('Calculo IMC', 'Índio Trainer', 'Insira as informações para o índio calcular o seu IMC', 'Calcular', 'Reset','text','altura','Altura em cm','img/indiomalhado.png');
 input('text','peso','Peso em Kg');
-
 function botaoEsq()
 {
     let altura = parseInt(document.getElementById('altura').value);
