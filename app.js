@@ -40,7 +40,7 @@ function rodada(mensagemH1, mensagemP, caminhoImg, limpacampo)
     limpaCampo(limpacampo);
 }
 //////////////////////////////////////////////////////
-function rodada2(mensagemH1, mensagemP, caminhoImg, limpacampo)
+function rodada2(mensagemH1, mensagemP, caminhoImg)
 {
     substituirNoHtml('titulo', mensagemH1);
     substituirNoHtml('paragrafo', mensagemP);
@@ -350,11 +350,23 @@ function botaoDir()
 /****************************************************************************************************************************************/
 /****************************************************************************************************************************************/
 //Índio construtor
-
-apresentacao('Índio Engenheiro','Cálculo de área e perímetro','Preencha as informações em METROS:','Calcular','Reiniciar','number','largura','Largura:','img/indioengenheiro.png');
-input('number','comprimento','Comprimento:');
+/*
+textos('Índio Engenheiro','Cálculo de área e perímetro','Deseja calcular a área de um retângulo ou um circulo?','Retângulo','Circulo');
+trocaimagem('img/indioengenheiro.png');
+inverteBotoes(3);
+let etapaRetangulo = 0;
+let etapaCirculo = 0;
 function botaoEsq()
 {
+    etapaRetangulo++
+    if (etapaRetangulo==1 && etapaCirculo!=1)
+    {
+        apresentacao('Índio Engenheiro','Área e perímetro do RETÂNGULO!','Preencha as informações em METROS:','Calcular','Voltar','number','largura','Largura:','img/indioengenheiro.png');
+        input('number','comprimento','Comprimento:');
+        console.log('ret/cir', etapaRetangulo, etapaCirculo);
+    }
+    if (etapaRetangulo==2)
+    {
     inverteBotoes(2);
     let largura = parseFloat(document.getElementById('largura').value);
     let comprimento = parseFloat(document.getElementById('comprimento').value);
@@ -362,21 +374,74 @@ function botaoEsq()
     let area = (largura*comprimento);
     removeInput('largura');
     removeInput('comprimento');
-    console.log(perimetro,area);
-    substituirNoHtml('titulo', `São ${area}m² de área e ${perimetro}m de perímetro!`);
-    substituirNoHtml('paragrafo', 'Pressione reiniciar');
-    trocaimagem('img/indioengenheirosorrindo.png');
+    substituirNoHtml('idBotaoDir', 'Reiniciar');
+    rodada2(`São ${area}m² de área e ${perimetro}m de perímetro!`,'Pressione reiniciar','img/indioengenheirosorrindo.png')
+    console.log('ret/cir', etapaRetangulo, etapaCirculo);
+    }
+    if(etapaRetangulo==1 && etapaCirculo==1)
+    {
+        inverteBotoes(2);
+        let raio = parseFloat(document.getElementById('raio').value);
+        let perimetro = (6.28*raio);
+        let area = 3.14*(raio*raio);
+        rodada2(`Seu círculo tem ${area}m² de área e ${perimetro}m de perímetro!`,'Pressione reiniciar','img/indioengenheirosorrindo.png')
+        removeInput('raio');
+        etapaRetangulo = 3;
+        console.log(raio,perimetro,area);
+        console.log('ret/cir', etapaRetangulo, etapaCirculo);
+    }
 }
 function botaoDir()
 {
-    inverteBotoes(1);
-    input('number','largura','Largura:');
-    input('number','comprimento','Comprimento:');
-    substituirNoHtml('titulo','Cálculo de área e perímetro');
-    substituirNoHtml('paragrafo', 'Preencha as informações em METROS');
-    trocaimagem('img/indioengenheiro.png');
+    etapaCirculo++
+    console.log('ret/cir', etapaRetangulo, etapaCirculo);
+    if(etapaRetangulo==1)
+    {
+        textos('Índio Engenheiro','Cálculo de área e perímetro','Deseja calcular a área de um retângulo ou um circulo?','Retângulo','Circulo');
+        trocaimagem('img/indioengenheiro.png');
+        inverteBotoes(3);
+        removeInput('largura');
+        removeInput('comprimento');
+        etapaRetangulo=0;
+        etapaCirculo=0;
+        console.log('ret/cir', etapaRetangulo, etapaCirculo);
+    }
+    if(etapaRetangulo==2)
+    {
+        textos('Índio Engenheiro','Cálculo de área e perímetro','Deseja calcular a área de um retângulo ou um circulo?','Retângulo','Circulo');
+        trocaimagem('img/indioengenheiro.png');
+        inverteBotoes(3);
+        etapaRetangulo=0;
+        etapaCirculo=0;
+        console.log('ret/cir', etapaRetangulo, etapaCirculo);
+    }
+    if(etapaRetangulo==0 && etapaCirculo==1)
+    {
+        apresentacao('Índio Engenheiro','Área e perímetro do CIRCULO!','Informe o RAIO do círculo em METROS:','Calcular','Voltar','number','raio','Raio:','img/indioengenheiro.png');
+        console.log('ret/cir', etapaRetangulo, etapaCirculo);
+    }
+    if(etapaRetangulo==3)
+    {
+        textos('Índio Engenheiro','Cálculo de área e perímetro','Deseja calcular a área de um retângulo ou um circulo?','Retângulo','Circulo');
+        trocaimagem('img/indioengenheiro.png');
+        inverteBotoes(3);
+        etapaRetangulo=0;
+        etapaCirculo=0;
+        console.log('ret/cir', etapaRetangulo, etapaCirculo);
+    }
+    if(etapaCirculo==2)
+    {
+        textos('Índio Engenheiro','Cálculo de área e perímetro','Deseja calcular a área de um retângulo ou um circulo?','Retângulo','Circulo');
+        trocaimagem('img/indioengenheiro.png');
+        inverteBotoes(3);
+        removeInput('raio');
+        etapaRetangulo=0;
+        etapaCirculo=0;
+        console.log('ret/cir', etapaRetangulo, etapaCirculo);
+    }
 }
 
+/****************************************************************************************************************************************/
 /****************************************************************************************************************************************/
 //Como fazer uma função
 /*
@@ -394,3 +459,4 @@ paragrafo.innerHTML = 'Qual o número indígena? 1 a 10';
 //São 3 codigos (titulo, tituloaba e paragrafo) que podem todos serem resumidos em apenas uma função
 //A forma otimizada é criando uma função para sempre ser lida, ao invés de toda vez repetir o código inteiro... Nome da função que criamos é substituirNoHtml
 /***********Forma redundante*************/
+
