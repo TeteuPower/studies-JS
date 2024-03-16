@@ -86,10 +86,10 @@ function inputCaixa(tipo, idInput, mensagem)
     document.getElementById('input').appendChild(input);
 }
 //////////////////////////////////////////////////////
-function removeInput(idInput)
+function removeCaixa(idInput)
 {
-    let removeinput = document.getElementById(idInput);
-    removeinput.parentNode.removeChild(removeinput);
+    let removeCaixa = document.getElementById(idInput);
+    removeCaixa.parentNode.removeChild(removeCaixa);
 }
 //////////////////////////////////////////////////////
 function apresentacao(aba,tituloH1,paragrafo,botaoesq,botaodir,tipoInput,idInput,mensagemInput,caminhoSrc)
@@ -120,7 +120,7 @@ function botaoEsq() //Função que é ativada quando aperta o botão "chutar"
     {
     rodada(`Você descobriu o número! ${numeroSecreto}`, `Precisou de ${tentativas} tentativas.`,'img/indiosorrindo.png','chute');
     inverteBotoes(2);
-    removeInput('chute');
+    removeCaixa('chute');
     }
     else
     {
@@ -178,7 +178,7 @@ function botaoEsq()
     {
     let numero2 = parseInt(document.getElementById('campo').value);
     trocaimagem('img/indiosorrindo.png');
-    removeInput('campo');
+    removeCaixa('campo');
     inverteBotoes(2);
         if(numero1>numero2)
         {
@@ -244,7 +244,7 @@ function botaoEsq()
         textos('Ferramenta do Índio', `A média dos ${quantidadeNumeros} números é ${media}`, `A soma deu ${soma}; Aperte em RESET para recomeçar`, 'Próximo', 'Reset');
         trocaimagem('img/indiosorrindo.png');
         inverteBotoes(2);
-        removeInput('campo');
+        removeCaixa('campo');
     }
 }
 
@@ -275,7 +275,7 @@ function botaoEsq()
     let numeroNaCaixa = document.getElementById('caixa').value;
     let resultado = fatorial(numeroNaCaixa);
     rodada2(`Resultado é ${resultado}`,`O Índio calculou o fatorial de ${numeroNaCaixa}`,'img/indiosorrindo.png');
-    removeInput('caixa');
+    removeCaixa('caixa');
     inverteBotoes(2);
 }
 function botaoDir()
@@ -298,22 +298,22 @@ function botaoEsq()
     if (imc<18.5) //magreza
     {
         rodada('MAGREZA', `Seu IMC é ${imc.toFixed(2)}`,'img/indiomagro.png','altura');
-        removeInput('altura');
-        removeInput('peso');
+        removeCaixa('altura');
+        removeCaixa('peso');
         inverteBotoes(2);
     }
     if (imc>18.5 && imc<24.9)//normal
     {
         rodada('NORMAL', `Seu IMC é ${imc.toFixed(2)}`,'img/indiosorrindo.png','altura');
-        removeInput('altura');
-        removeInput('peso');
+        removeCaixa('altura');
+        removeCaixa('peso');
         inverteBotoes(2);
     }
     if (imc>24.9)//obesidade
     {
         rodada('OBESIDADE', `Seu IMC é ${imc.toFixed(2)}`,'img/indiogordo.png','altura');
-        removeInput('altura');
-        removeInput('peso');
+        removeCaixa('altura');
+        removeCaixa('peso');
         inverteBotoes(2);
     }
 }
@@ -338,7 +338,7 @@ function botaoEsq()
     let palavraDolar = dolar==1 ? 'Dólar' : 'Dólares';
     rodada(`${dolar.toFixed(2)} ${palavraDolar}`,'Faça uma nova cotação','img/indioricosorrindo.png','caixaReal');
     inverteBotoes('2');
-    removeInput('caixaReal');
+    removeCaixa('caixaReal');
 }
 function botaoDir()
 {
@@ -372,8 +372,8 @@ function botaoEsq()
     let comprimento = parseFloat(document.getElementById('comprimento').value);
     let perimetro = (2*largura)+(2*comprimento);
     let area = (largura*comprimento);
-    removeInput('largura');
-    removeInput('comprimento');
+    removeCaixa('largura');
+    removeCaixa('comprimento');
     substituirNoHtml('idBotaoDir', 'Reiniciar');
     rodada2(`São ${area}m² de área e ${perimetro}m de perímetro!`,'Pressione reiniciar','img/indioengenheirosorrindo.png')
     console.log('ret/cir', etapaRetangulo, etapaCirculo);
@@ -385,7 +385,7 @@ function botaoEsq()
         let perimetro = (6.28*raio);
         let area = 3.14*(raio*raio);
         rodada2(`Seu círculo tem ${area}m² de área e ${perimetro}m de perímetro!`,'Pressione reiniciar','img/indioengenheirosorrindo.png')
-        removeInput('raio');
+        removeCaixa('raio');
         etapaRetangulo = 3;
         console.log(raio,perimetro,area);
         console.log('ret/cir', etapaRetangulo, etapaCirculo);
@@ -400,8 +400,8 @@ function botaoDir()
         textos('Índio Engenheiro','Cálculo de área e perímetro','Deseja calcular a área de um retângulo ou um circulo?','Retângulo','Circulo');
         trocaimagem('img/indioengenheiro.png');
         inverteBotoes(3);
-        removeInput('largura');
-        removeInput('comprimento');
+        removeCaixa('largura');
+        removeCaixa('comprimento');
         etapaRetangulo=0;
         etapaCirculo=0;
         console.log('ret/cir', etapaRetangulo, etapaCirculo);
@@ -434,7 +434,7 @@ function botaoDir()
         textos('Índio Engenheiro','Cálculo de área e perímetro','Deseja calcular a área de um retângulo ou um circulo?','Retângulo','Circulo');
         trocaimagem('img/indioengenheiro.png');
         inverteBotoes(3);
-        removeInput('raio');
+        removeCaixa('raio');
         etapaRetangulo=0;
         etapaCirculo=0;
         console.log('ret/cir', etapaRetangulo, etapaCirculo);
