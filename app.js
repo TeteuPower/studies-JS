@@ -76,7 +76,7 @@ function textos(aba,titulo,paragrafo,botaoesq,botaodir)
     substituirNoHtml('idBotaoDir', botaodir);
 }
 //////////////////////////////////////////////////////
-function input(tipo, idInput, mensagem)
+function inputCaixa(tipo, idInput, mensagem)
 {
     let input = document.createElement("input");
     input.type = tipo;
@@ -95,7 +95,7 @@ function removeInput(idInput)
 function apresentacao(aba,tituloH1,paragrafo,botaoesq,botaodir,tipoInput,idInput,mensagemInput,caminhoSrc)
 {
     textos(aba,tituloH1,paragrafo,botaoesq,botaodir);
-    input(tipoInput,idInput,mensagemInput);
+    inputCaixa(tipoInput,idInput,mensagemInput);
     trocaimagem(caminhoSrc);
 }
 //////////////////////////////////////////////////////
@@ -153,7 +153,7 @@ function botaoDir()
     substituirNoHtml('paragrafo', `Qual é o número indígena? 1 a ${dificuldade}`);
     trocaimagem('/img/indioserio.png');
     inverteBotoes(1);
-    input('number','chute','Insira um número')
+    inputCaixa('number','chute','Insira um número')
 }
 //////////////////////////////////////////////////////
 
@@ -204,7 +204,7 @@ function botaoDir()
     textos('Ferramenta do Índio','Índio Matemático!','Insira dois números e o índio dirá qual é o maior!','Inserir','Reset');
     inverteBotoes(1);
     trocaimagem('img/indioserio.png');
-    input('number','campo','Insira o número');
+    inputCaixa('number','campo','Insira o número');
 }
 
 //****************************************************************************************************************************************/
@@ -256,7 +256,7 @@ function botaoDir()
     quantidadeNumeros = 0;
     digiteNumero = 1;
     inverteBotoes(1);
-    input('number','campo','Insira o número:');
+    inputCaixa('number','campo','Insira o número:');
     textos('Ferramenta do Índio','O Índio Calculista!','Digite a quantidade de números que você deseja tirar a média','Próximo','Reset');
     trocaimagem('img/indioserio.png');
 }
@@ -281,7 +281,7 @@ function botaoEsq()
 function botaoDir()
 {
     rodada2('Índio Matemático!','Digite o número para o índio calcular o seu fatorial!','img/indioserio.png','caixa');
-    input('number','caixa','Digite o número:');
+    inputCaixa('number','caixa','Digite o número:');
     inverteBotoes(1);
 }
 /****************************************************************************************************************************************/
@@ -289,7 +289,7 @@ function botaoDir()
 //Sistema de cálculo IMC
 /*
 apresentacao('Calculo IMC', 'Índio Trainer', 'Insira as informações para o índio calcular o seu IMC', 'Calcular', 'Reset','text','altura','Altura em cm','img/indiomalhado.png');
-input('text','peso','Peso em Kg');
+inputCaixa('text','peso','Peso em Kg');
 function botaoEsq()
 {
     let altura = parseInt(document.getElementById('altura').value);
@@ -320,8 +320,8 @@ function botaoEsq()
 function botaoDir()
 {
     rodada2('Índio Trainer', 'Insira as informações para o índio calcular o seu IMC','img/indiomalhado.png');
-    input('number','altura','Altura em cm');
-    input('number','peso','Peso em Kg');
+    inputCaixa('number','altura','Altura em cm');
+    inputCaixa('number','peso','Peso em Kg');
     inverteBotoes(1);
 }
 
@@ -342,7 +342,7 @@ function botaoEsq()
 }
 function botaoDir()
 {
-    input('number','caixaReal','R$');
+    inputCaixa('number','caixaReal','R$');
     rodada('Converter para dólar','Digite o valor em reais:','img/indiorico.png','caixaReal');
     inverteBotoes(1);
 }
@@ -362,7 +362,7 @@ function botaoEsq()
     if (etapaRetangulo==1 && etapaCirculo!=1)
     {
         apresentacao('Índio Engenheiro','Área e perímetro do RETÂNGULO!','Preencha as informações em METROS:','Calcular','Voltar','number','largura','Largura:','img/indioengenheiro.png');
-        input('number','comprimento','Comprimento:');
+        inputCaixa('number','comprimento','Comprimento:');
         console.log('ret/cir', etapaRetangulo, etapaCirculo);
     }
     if (etapaRetangulo==2)
@@ -442,6 +442,16 @@ function botaoDir()
 }
 
 /****************************************************************************************************************************************/
+/****************************************************************************************************************************************/
+//Tabuada do Índio
+/*
+apresentacao('Tabuada','Tabuada do Índio!','Insira o número que deseja a tabuada','Calcular','Reset','number','caixa','Digite aqui','img/indiosorrindo.png');
+
+function botaoEsq()
+{
+    let numero = parseInt(document.getElementById('caixa').value);
+    rodada2(`Tabuada do ${numero}`,'teste','img/indiomalhado.png');
+}
 /****************************************************************************************************************************************/
 //Como fazer uma função
 /*
