@@ -32,18 +32,40 @@ function limpaCampo (input)
     informacao.value = '';//Setei dentro da caixa vazio
 }
 //////////////////////////////////////////////////////
+function adicionaTexto(tipoTexto,idTexto, texto)
+{
+    let inputP = document.createElement(tipoTexto);
+    inputP.id = idTexto;
+    if(tipoTexto === 'p')
+    {
+        inputP.className = "texto__paragrafo";
+    }
+    inputP.textContent = texto;
+    document.getElementById('divTextos').appendChild(inputP);
+}
+//////////////////////////////////////////////////////
+function limpaTexto(idTexto)
+{
+    let removeTexto = document.getElementById(idTexto);
+    removeTexto.parentNode.removeChild(removeTexto);
+}
+//////////////////////////////////////////////////////
 function rodada(mensagemH1, mensagemP, caminhoImg, limpacampo)
 {
-    substituirNoHtml('titulo', mensagemH1);
-    substituirNoHtml('paragrafo', mensagemP);
+    adicionaTexto('h1','titulo', mensagemH1)
+    //substituirNoHtml('titulo', mensagemH1);
+    adicionaTexto('p','paragrafo', mensagemP);
+    //substituirNoHtml('paragrafo', mensagemP);
     trocaimagem(caminhoImg);
     limpaCampo(limpacampo);
 }
 //////////////////////////////////////////////////////
 function rodada2(mensagemH1, mensagemP, caminhoImg)
 {
-    substituirNoHtml('titulo', mensagemH1);
-    substituirNoHtml('paragrafo', mensagemP);
+    adicionaTexto('h1','titulo', mensagemH1)
+    adicionaTexto('p','paragrafo', mensagemP);
+    //substituirNoHtml('titulo', mensagemH1);
+    //substituirNoHtml('paragrafo', mensagemP);
     trocaimagem(caminhoImg);
 }
 //////////////////////////////////////////////////////
@@ -70,8 +92,10 @@ function inverteBotoes(onOff123)
 function textos(aba,titulo,paragrafo,botaoesq,botaodir)
 {
     substituirNoHtml('tituloAba', aba);
-    substituirNoHtml('titulo', titulo); // Na função 'substituirNoHtml', onde tem 'tag' é substituído por 'h1' e onde tem 'texto' é substituído por 'Jogo do Índio'
-    substituirNoHtml('paragrafo', paragrafo);
+    adicionaTexto('h1','titulo', titulo);
+    //substituirNoHtml('titulo', titulo); // Na função 'substituirNoHtml', onde tem 'tag' é substituído por 'h1' e onde tem 'texto' é substituído por 'Jogo do Índio'
+    //substituirNoHtml('paragrafo', paragrafo);
+    adicionaTexto('p','paragrafo', paragrafo);
     substituirNoHtml('idBotaoEsq', botaoesq);
     substituirNoHtml('idBotaoDir', botaodir);
 }
@@ -92,6 +116,7 @@ function removeCaixa(idInput)
     removeCaixa.parentNode.removeChild(removeCaixa);
 }
 //////////////////////////////////////////////////////
+
 function apresentacao(aba,tituloH1,paragrafo,botaoesq,botaodir,tipoInput,idInput,mensagemInput,caminhoSrc)
 {
     textos(aba,tituloH1,paragrafo,botaoesq,botaodir);
@@ -113,6 +138,8 @@ let nivel = 1;
 //////////////////////////////////////////////////////
 function botaoEsq() //Função que é ativada quando aperta o botão "chutar"
 {
+    limpaTexto('titulo');
+    limpaTexto('paragrafo');
     let chute = document.getElementById('chute').value; //O '.valeu' serve para ser lido APENAS a informação dentro da caixa input
     tentativas++;
 
@@ -134,10 +161,14 @@ function botaoEsq() //Função que é ativada quando aperta o botão "chutar"
         }
         if (tentativas>=3 && chute>numeroSecreto)
         {
+        limpaTexto('titulo');
+        limpaTexto('paragrafo');
         rodada('O índio está ficando BRAVO',`O NÚMERO É MENOOOR QUE ${chute}!`,'/img/indiomuitobravocolorido.png','chute');
         }
         if (tentativas>=3 && chute<numeroSecreto)
         {
+        limpaTexto('titulo');
+        limpaTexto('paragrafo');
         rodada('O índio está ficando BRAVO',`O NÚMERO É MAIOOOR QUE ${chute}!`,'/img/indiomuitobravocolorido.png','chute');
         }
     }
@@ -167,6 +198,8 @@ let numero1 = 0;
 let numero2 = 0;
 function botaoEsq()
 {
+    limpaTexto('titulo');
+    limpaTexto('paragrafo');
     apertouBotao++;
     if(apertouBotao==1)
     {
@@ -200,6 +233,8 @@ function botaoEsq()
 }
 function botaoDir()
 {
+    limpaTexto('titulo');
+    limpaTexto('paragrafo');
     apertouBotao = 0;
     textos('Ferramenta do Índio','Índio Matemático!','Insira dois números e o índio dirá qual é o maior!','Inserir','Reset');
     inverteBotoes(1);
@@ -214,12 +249,14 @@ function botaoDir()
 apresentacao('Ferramenta do Índio','O Índio Calculista!','Deseja calcular a média de quantos números?','Próximo','Reset','number', 'campo', 'Insira o número','img/indioserio.png');
 let apertouBotao = -1; 
 let soma = 0;
-let contador = -2;
+let contador = -1;
 let quantidadeNumeros;
 let digiteNumero = 1;
 
 function botaoEsq()
 {
+    limpaTexto('titulo');
+    limpaTexto('paragrafo');
     contador++;
     apertouBotao++;
 
@@ -230,7 +267,7 @@ function botaoEsq()
         digiteNumero++
         limpaCampo('campo');
     }
-    if (apertouBotao > 1)
+    if (apertouBotao >= 1)
     {
         let numero = parseInt(document.getElementById('campo').value);
         soma += numero;
@@ -240,6 +277,8 @@ function botaoEsq()
     }
     if (contador === quantidadeNumeros)
     {
+        limpaTexto('titulo');
+        limpaTexto('paragrafo');
         let media = soma / quantidadeNumeros;
         textos('Ferramenta do Índio', `A média dos ${quantidadeNumeros} números é ${media}`, `A soma deu ${soma}; Aperte em RESET para recomeçar`, 'Próximo', 'Reset');
         trocaimagem('img/indiosorrindo.png');
@@ -250,9 +289,11 @@ function botaoEsq()
 
 function botaoDir()
 {
+    limpaTexto('titulo');
+    limpaTexto('paragrafo');
     apertouBotao = -1;
     soma = 0;
-    contador = -2;
+    contador = -1;
     quantidadeNumeros = 0;
     digiteNumero = 1;
     inverteBotoes(1);
@@ -267,6 +308,8 @@ function botaoDir()
 apresentacao('Fatorial','Índio Matemático!','Digite um número para o índio calcular o seu fatorial!','Calcular','Reset','number','caixa','Digite o número:','img/indioserio.png');
 function botaoEsq()
 {
+    limpaTexto('titulo');
+    limpaTexto('paragrafo');
     function fatorial(numero)
     {
         if (numero === 0 || numero === 1) return 1;
@@ -280,6 +323,8 @@ function botaoEsq()
 }
 function botaoDir()
 {
+    limpaTexto('titulo');
+    limpaTexto('paragrafo');
     rodada2('Índio Matemático!','Digite o número para o índio calcular o seu fatorial!','img/indioserio.png','caixa');
     inputCaixa('number','caixa','Digite o número:');
     inverteBotoes(1);
@@ -292,6 +337,8 @@ apresentacao('Calculo IMC', 'Índio Trainer', 'Insira as informações para o í
 inputCaixa('text','peso','Peso em Kg');
 function botaoEsq()
 {
+    limpaTexto('titulo');
+    limpaTexto('paragrafo');
     let altura = parseInt(document.getElementById('altura').value);
     let peso = parseInt(document.getElementById('peso').value);
     let imc = 10000*[peso / (altura*altura)];
@@ -319,6 +366,8 @@ function botaoEsq()
 }
 function botaoDir()
 {
+    limpaTexto('titulo');
+    limpaTexto('paragrafo');
     rodada2('Índio Trainer', 'Insira as informações para o índio calcular o seu IMC','img/indiomalhado.png');
     inputCaixa('number','altura','Altura em cm');
     inputCaixa('number','peso','Peso em Kg');
@@ -333,6 +382,8 @@ apresentacao('Dólar Real','Converter para dólar','Digite o valor em reais:','C
 
 function botaoEsq()
 {
+    limpaTexto('titulo');
+    limpaTexto('paragrafo');
     let reais = parseFloat(document.getElementById('caixaReal').value);
     let dolar = reais / 4.8;
     let palavraDolar = dolar==1 ? 'Dólar' : 'Dólares';
@@ -342,6 +393,8 @@ function botaoEsq()
 }
 function botaoDir()
 {
+    limpaTexto('titulo');
+    limpaTexto('paragrafo');
     inputCaixa('number','caixaReal','R$');
     rodada('Converter para dólar','Digite o valor em reais:','img/indiorico.png','caixaReal');
     inverteBotoes(1);
@@ -350,7 +403,7 @@ function botaoDir()
 /****************************************************************************************************************************************/
 /****************************************************************************************************************************************/
 //Índio construtor
-/*
+
 textos('Índio Engenheiro','Cálculo de área e perímetro','Deseja calcular a área de um retângulo ou um circulo?','Retângulo','Circulo');
 trocaimagem('img/indioengenheiro.png');
 inverteBotoes(3);
@@ -358,6 +411,8 @@ let etapaRetangulo = 0;
 let etapaCirculo = 0;
 function botaoEsq()
 {
+    limpaTexto('titulo');
+    limpaTexto('paragrafo');
     etapaRetangulo++
     if (etapaRetangulo==1 && etapaCirculo!=1)
     {
@@ -393,6 +448,8 @@ function botaoEsq()
 }
 function botaoDir()
 {
+    limpaTexto('titulo');
+    limpaTexto('paragrafo');
     etapaCirculo++
     console.log('ret/cir', etapaRetangulo, etapaCirculo);
     if(etapaRetangulo==1)
@@ -449,8 +506,12 @@ apresentacao('Tabuada','Tabuada do Índio!','Insira o número que deseja a tabua
 
 function botaoEsq()
 {
-    let numero = parseInt(document.getElementById('caixa').value);
-    rodada2(`Tabuada do ${numero}`,'teste','img/indiomalhado.png');
+
+    //let numero = parseInt(document.getElementById('caixa').value);
+    //rodada2(`Tabuada do ${numero}`,'teste','img/indiomalhado.png');
+    //removeCaixa('caixa');
+    adicionaTexto('p','paragrafo','Teste')
+
 }
 /****************************************************************************************************************************************/
 //Como fazer uma função
