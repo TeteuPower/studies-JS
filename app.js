@@ -116,7 +116,6 @@ function removeCaixa(idInput)
     removeCaixa.parentNode.removeChild(removeCaixa);
 }
 //////////////////////////////////////////////////////
-
 function apresentacao(aba,tituloH1,paragrafo,botaoesq,botaodir,tipoInput,idInput,mensagemInput,caminhoSrc)
 {
     textos(aba,tituloH1,paragrafo,botaoesq,botaodir);
@@ -403,7 +402,7 @@ function botaoDir()
 /****************************************************************************************************************************************/
 /****************************************************************************************************************************************/
 //Índio construtor
-
+/*
 textos('Índio Engenheiro','Cálculo de área e perímetro','Deseja calcular a área de um retângulo ou um circulo?','Retângulo','Circulo');
 trocaimagem('img/indioengenheiro.png');
 inverteBotoes(3);
@@ -502,17 +501,40 @@ function botaoDir()
 /****************************************************************************************************************************************/
 //Tabuada do Índio
 /*
-apresentacao('Tabuada','Tabuada do Índio!','Insira o número que deseja a tabuada','Calcular','Reset','number','caixa','Digite aqui','img/indiosorrindo.png');
-
+apresentacao('Tabuada','Tabuada do Índio!','Insira o número que deseja a tabuada','Calcular','Reset','number','caixa','Digite aqui','img/indioserio.png');
 function botaoEsq()
 {
-
-    //let numero = parseInt(document.getElementById('caixa').value);
-    //rodada2(`Tabuada do ${numero}`,'teste','img/indiomalhado.png');
-    //removeCaixa('caixa');
-    adicionaTexto('p','paragrafo','Teste')
-
+    limpaTexto('titulo');
+    limpaTexto('paragrafo');
+    let numero = parseInt(document.getElementById('caixa').value);
+    adicionaTexto('p','paragrafo',`Tabuada do ${numero}`)
+    let i = 1;
+    while (i <= 10)
+    {
+        let resultado = numero * i;
+        adicionaTexto('p', `resultado${i}`, `${numero} x ${i} = ${resultado}`);
+        i++;
+    }
+    trocaimagem('img/indiosorrindo.png');
+    removeCaixa('caixa');
+    inverteBotoes(2);
 }
+function botaoDir()
+{
+    let divTextos = document.getElementById('divTextos');
+    let child = divTextos.lastElementChild;
+    while (child)
+    {
+        if (child.tagName.toLowerCase() === 'p') {
+            divTextos.removeChild(child);
+        }
+        child = divTextos.lastElementChild;
+    }
+    inverteBotoes(1);
+    rodada2('Tabuada do Índio','Insira o número que deseja a tabuada','img/indioserio.png');
+    inputCaixa('number','caixa','Digite aqui');
+}
+/****************************************************************************************************************************************/
 /****************************************************************************************************************************************/
 //Como fazer uma função
 /*
