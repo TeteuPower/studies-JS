@@ -50,7 +50,7 @@ body::before {
 
 .container__informacoes {
     flex: 1;
-    padding: 3rem;
+    padding: 1rem;
 }
 
 
@@ -83,24 +83,25 @@ body::before {
 
 .container__botoes {
     display: flex;
-    gap: 2em;
+    gap: 10px;
+    flex-direction: column;
 }
 
 .container__botao {
     border-radius: 16px;
     background: #1875E8;
-    padding: 16px 24px;
+    padding: 8px 12px;
     width: 100%;
     font-size: 24px;
     font-weight: 700;
     border: none;
-    margin-top: 2rem;
+    margin-top: 2px;
 }
 
 h1 {
     font-family: 'Chakra Petch', sans-serif;
-    font-size: 72px;
-    padding-bottom: 3rem;
+    font-size: 50px;
+    padding-bottom: 0px;
     text-align: center;
 }
 

@@ -116,6 +116,22 @@ function removeCaixa(idInput)
     removeCaixa.parentNode.removeChild(removeCaixa);
 }
 //////////////////////////////////////////////////////
+function adicionaBotao(nomeFuncaoBotao, botaoId, textoBotao)
+{
+    let botao = document.createElement("button");
+    botao.onclick = nomeFuncaoBotao;
+    botao.className = "container__botao";
+    botao.id = botaoId;
+    botao.textContent = textoBotao;
+    document.getElementById("botoes").appendChild(botao);
+}
+//////////////////////////////////////////////////////
+function removeBotao(idBotao)
+{
+    let removerBotao = document.getElementById(idBotao);
+    removerBotao.parentNode.removeChild(removerBotao);
+}
+//////////////////////////////////////////////////////
 function apresentacao(aba,tituloH1,paragrafo,botaoesq,botaodir,tipoInput,idInput,mensagemInput,caminhoSrc)
 {
     textos(aba,tituloH1,paragrafo,botaoesq,botaodir);
@@ -126,7 +142,7 @@ function apresentacao(aba,tituloH1,paragrafo,botaoesq,botaodir,tipoInput,idInput
 
 /****************************************************************************************************************************************/
 //Jogo do Índio (Descobrir o número)
-
+/*
 dificuldade = 10;//Dificuldade do jogo
 apresentacao('Jogo Indígena','Jogo do Índio',`Qual é o número indígena? 1 a ${dificuldade}`,'Chutar','Aumentar Dificuldade','number','chute','Insira um número','img/indioserio.png');
 let numeroSecreto = gerarNumeroAleatorio(); //criei o número secreto, sendo ele o produto da função gerarNumeroAleatorio
