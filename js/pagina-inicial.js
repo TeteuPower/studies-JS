@@ -1,8 +1,8 @@
 //Página Inicial
 inverteBotoes(3);
-textos('Sistemas JS','Escolha um Sistema:','','Número Secreto','Número Maior');
+textos('Sistemas JS','Escolha um Sistema:','','Jogo do Número Secreto','Qual Número é Maior?');
 trocaimagem('img/indiosorrindo.png')
-adicionaBotao(mediaNumeros,'botaoMediaNumeros', 'Tirar Média');
+adicionaBotao(mediaNumeros,'botaoMediaNumeros', 'Calcular Médias');
 adicionaBotao(fatorial,'botaoFatorial','Calcular Fatorial');
 adicionaBotao(imc,'botaoImc','Calcular IMC');
 adicionaBotao(realDolar,'botaoRealDolar','Converter Real->Dolar');

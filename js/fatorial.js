@@ -24,3 +24,7 @@ function botaoDir()
     inputCaixa('number','caixa','Digite o número:');
     inverteBotoes(1);
 }
+function sair()
+{    
+    window.location.href = '../index.html';
+}

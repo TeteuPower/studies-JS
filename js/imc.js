@@ -40,3 +40,7 @@ function botaoDir()
     inputCaixa('number','peso','Peso em Kg');
     inverteBotoes(1);
 }
+function sair()
+{    
+    window.location.href = '../index.html';
+}

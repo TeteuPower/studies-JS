@@ -93,3 +93,7 @@ function botaoDir()
         console.log('ret/cir', etapaRetangulo, etapaCirculo);
     }
 }
+function sair()
+{    
+    window.location.href = '../index.html';
+}

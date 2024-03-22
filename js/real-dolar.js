@@ -21,3 +21,7 @@ function botaoDir()
     rodada('Converter para dólar','Digite o valor em reais:','../img/indiorico.png','caixaReal');
     inverteBotoes(1);
 }
+function sair()
+{    
+    window.location.href = '../index.html';
+}
