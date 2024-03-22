@@ -1,6 +1,6 @@
 //Jogo do Índio (Descobrir o número)
 dificuldade = 10;//Dificuldade do jogo
-apresentacao('Jogo Indígena','Jogo do Índio',`Qual é o número indígena? 1 a ${dificuldade}`,'Chutar','Aumentar Dificuldade','number','chute','Insira um número','../img/indioserio.png');
+apresentacao('Jogo Indígena','Jogo do número secreto!',`Qual é o número indígena? 1 a ${dificuldade}`,'Chutar','Aumentar Dificuldade','number','chute','Insira um número','../img/indioserio.png');
 let numeroSecreto = gerarNumeroAleatorio(); //criei o número secreto, sendo ele o produto da função gerarNumeroAleatorio
 let tentativas = 0;
 let chute = document.getElementById('chute').value; //O '.valeu' serve para ser lido APENAS a informação dentro da caixa input
