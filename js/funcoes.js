@@ -139,6 +139,16 @@ function apresentacao(aba,tituloH1,paragrafo,botaoesq,botaodir,tipoInput,idInput
     trocaimagem(caminhoSrc);
 }
 //////////////////////////////////////////////////////
+function numerosAleatorios(min, max, quantidade)
+{
+  let numeros = [];
+  for (let i = 0; i < quantidade; i++)
+  {
+    numeros.push(Math.floor(Math.random() * (max - min + 1)) + min);
+  }
+  return numeros;
+}
+//////////////////////////////////////////////////////
 
 /****************************************************************************************************************************************/
 //Jogo do Índio (Descobrir o número)

@@ -8,6 +8,7 @@ adicionaBotao(imc,'botaoImc','Calcular IMC');
 adicionaBotao(realDolar,'botaoRealDolar','Converter Real->Dolar');
 adicionaBotao(construtor,'botaoConstrutor','Calcular áreas');
 adicionaBotao(tabuada,'botaoTabuada','Calcular Tabuada');
+adicionaBotao(numerosAleatorios, 'botaoNumeroAleatorio', 'Gerar números aleatórios')
 
 function botaoEsq()
 {
@@ -48,4 +49,8 @@ function construtor()
 function tabuada()
 {
     window.location.href = 'html/sistema-tabuada.html';
+}
+function numerosAleatorios()
+{
+    window.location.href = 'html/numeros-aleatorios.html';
 }
