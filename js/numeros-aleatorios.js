@@ -30,7 +30,7 @@ function sortear()
         trocaimagem('../img/indiosorrindo.png');
         }
     }
-    inverteBotoes(2);
+    inverteBotoes(3);
 
 }
 function reiniciar()
