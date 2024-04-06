@@ -90,6 +90,7 @@
 
 .dashboard__item__img--rented {
     position: relative;
+    margin-bottom: 1rem;
 }
 
 .dashboard__item__img--rented::after {
