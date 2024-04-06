@@ -116,14 +116,14 @@ function removeCaixa(idInput)
     removeCaixa.parentNode.removeChild(removeCaixa);
 }
 //////////////////////////////////////////////////////
-function adicionaBotao(nomeFuncaoBotao, botaoId, textoBotao)
+function adicionaBotao(nomeFuncaoBotao, botaoId, textoBotao,idHtml)
 {
     let botao = document.createElement("button");
     botao.onclick = nomeFuncaoBotao;
     botao.className = "container__botao";
     botao.id = botaoId;
     botao.textContent = textoBotao;
-    document.getElementById("botoes").appendChild(botao);
+    document.getElementById(idHtml).appendChild(botao);
 }
 //////////////////////////////////////////////////////
 function removeBotao(idBotao)
@@ -145,7 +145,6 @@ function numerosAleatorios(min, max, quantidade)
     {
     return [];
     }
-  
     let numeros = new Set();
     while (numeros.size < quantidade)
     {

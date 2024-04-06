@@ -18,16 +18,20 @@
     <div class="container">
         <div class="container__conteudo">
             <div class="container__informacoes">
-                <div id="divTextos" class="container__texto">
-                    <!--<h1 id="titulo"></h1>-->
-                    <!--<p id="paragrafo" class="texto__paragrafo"></p>-->
-                </div>
-                    <div id="input" class="container__divInput">
-                        <!--<input type="number" min="1" max="10" class="container__input"> (É a caixa para inserção dos números) -->
+                    <div id="divTextos" class="container__texto">
+                        <!--Textos inseridos de forma dinâmica pelo JS-->
                     </div>
-                    <div id="botoes" class="container__botoes">
-                        <button onclick="botaoEsq()" id="idBotaoEsq" class="container__botao"></button> <!--button onclick, criei um botão porém ser atribuída uma ação, que é a "verificarChute" -->
-                        <button onclick="botaoDir()" id="idBotaoDir" class="container__botao" disabled></button>
+                    <div id="input" class="container__divInput">
+                        <!-- inputs inseridos de forma dinâmica pelo JS -->
+                    </div>
+                    <div class="caixaBotoes">
+                        <div id="botoes" class="container__botoes">
+                            <button onclick="botaoEsq()" id="idBotaoEsq" class="container__botao"></button> <!--button onclick, criei um botão porém ser atribuída uma ação, que é a "verificarChute" -->
+                            <button onclick="botaoDir()" id="idBotaoDir" class="container__botao" disabled></button>
+                        </div>
+                        <div id="botoes2" class="container__botoes">
+                            <!-- botões inseridos de forma dinâmica pelo JS -->
+                        </div>
                     </div>
             </div>
             <img id="idImgPrincipal" src="" alt="Desenho de um índio" class="container__imagem-pessoa" />
