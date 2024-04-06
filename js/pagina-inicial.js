@@ -9,6 +9,7 @@ adicionaBotao(realDolar,'botaoRealDolar','Converter Real->Dolar','botoes2');
 adicionaBotao(construtor,'botaoConstrutor','Calcular áreas','botoes2');
 adicionaBotao(tabuada,'botaoTabuada','Calcular Tabuada','botoes2');
 adicionaBotao(numerosAleatorios, 'botaoNumeroAleatorio', 'Gerar números aleatórios','botoes2')
+adicionaBotao(alugarGames, 'botaoAlugarGames', 'Alugar Jogos', 'botoes2')
 
 function botaoEsq()
 {
@@ -54,4 +55,9 @@ function tabuada()
 function numerosAleatorios()
 {
     window.location.href = 'html/numeros-aleatorios.html';
+}
+
+function alugarGames()
+{
+    window.location.href = 'html/alugar-games.html';
 }
