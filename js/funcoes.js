@@ -141,12 +141,18 @@ function apresentacao(aba,tituloH1,paragrafo,botaoesq,botaodir,tipoInput,idInput
 //////////////////////////////////////////////////////
 function numerosAleatorios(min, max, quantidade)
 {
-  let numeros = [];
-  for (let i = 0; i < quantidade; i++)
-  {
-    numeros.push(Math.floor(Math.random() * (max - min + 1)) + min);
-  }
-  return numeros;
+    if (quantidade > (max - min + 1))
+    {
+    return [];
+    }
+  
+    let numeros = new Set();
+    while (numeros.size < quantidade)
+    {
+    let numero = Math.floor(Math.random() * (max - min + 1)) + min;
+    numeros.add(numero);
+    }
+    return Array.from(numeros);
 }
 //////////////////////////////////////////////////////
 
