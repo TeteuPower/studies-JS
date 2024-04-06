@@ -35,7 +35,7 @@
     gap: 53px;
     align-items: center;
 
-    margin: 88px 0px 40px;
+    margin: 30px 0px 20px;
 }
 
 .divisor__line {
@@ -47,9 +47,9 @@
 .page-title {
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 700;
-    font-size: 5rem;
+    font-size: 3.5rem;
 
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 .page-title__emphasis {
@@ -64,7 +64,7 @@
     border-style: solid;
     border-color: #00F4BF;
 
-    padding: 3rem;
+    padding: 1.5rem;
     width: 100%;
 }
 
@@ -106,9 +106,9 @@
 
 .dashboard__item__name {
     font-weight: 600;
-    font-size: 2rem;
+    font-size: 1.5rem;
 
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .dashboard__item__button {
@@ -116,7 +116,7 @@
     justify-content: center;
 
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1rem;
 
     padding: 1rem 1.5rem;
     min-width: 13rem;
