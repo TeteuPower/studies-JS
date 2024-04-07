@@ -154,6 +154,12 @@ function numerosAleatorios(min, max, quantidade)
     return Array.from(numeros);
 }
 //////////////////////////////////////////////////////
+function mostrarConfirmacao(mensagemTexto)
+{
+  mensagem.textContent = mensagemTexto;
+  modal.style.display = 'block';
+}
+//////////////////////////////////////////////////////
 
 /****************************************************************************************************************************************/
 //Jogo do Índio (Descobrir o número)

@@ -1,7 +1,4 @@
-function sair()
-{    
-    window.location.href = '../index.html';
-}
+let contagem = 0;
 
 function alterarStatus(id)
 {
@@ -12,15 +9,38 @@ function alterarStatus(id)
 
     if(imagem.classList.contains('dashboard__item__img--rented'))
     {
-        imagem.classList.remove('dashboard__item__img--rented');
-        nomeBotao.textContent = 'Alugar';
-        nomeBotao.classList.remove('dashboard__item__button--return')
+        let modal = document.getElementById('modal');
+        let botaoSim = document.getElementById('botaoSim');
+        let botaoNao = document.getElementById('botaoNao');
+        
+        mostrarConfirmacao('Você tem certeza que devolveu o jogo?');
+        
+        botaoSim.onclick = function()
+        {
+          modal.style.display = 'none';
+          imagem.classList.remove('dashboard__item__img--rented');
+          nomeBotao.textContent = 'Alugar';
+          nomeBotao.classList.remove('dashboard__item__button--return')
+          contagem--;
+          console.log('Jogos Alugados',contagem);
+        };
+        
+        botaoNao.onclick = function()
+        {
+          modal.style.display = 'none';
+        };
     }
     else
     {
+        contagem++;
         imagem.classList.add('dashboard__item__img--rented');
         nomeBotao.textContent = 'Devolver';
         nomeBotao.classList.add('dashboard__item__button--return');
     }
-    console.log(nomeBotao);
+    console.log('Jogos Alugados',contagem);
+}
+
+function sair()
+{    
+    window.location.href = '../index.html';
 }

@@ -25,6 +25,13 @@
         <button onclick="sair()" id="idBotaoSair" class="container__botao__sair">Sair</button>
         </div>
         <section class="dashboard">
+            <div id="modal" class="modal">
+              <div class="modal-content">
+                <p id="mensagem" class="mensagemConfirmacao"></p>
+                <button id="botaoSim">Sim</button>
+                <button id="botaoNao">Não</button>
+              </div>
+            </div>
             <ul class="dashboard__items">
                 <li class="dashboard__items__item" id="game-1">
                     <div class="dashboard__item__img">
@@ -53,6 +60,7 @@
     </main>
 
     <script src="../js/alugar-games.js"></script>
+    <script src="../js/funcoes.js"></script>
 </body>
 
 </html>
