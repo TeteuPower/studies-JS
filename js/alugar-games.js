@@ -39,8 +39,3 @@ function alterarStatus(id)
     }
     console.log('Jogos Alugados',contagem);
 }
-
-function sair()
-{    
-    window.location.href = '../index.html';
-}

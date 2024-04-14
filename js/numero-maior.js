@@ -49,7 +49,3 @@ function botaoDir()
     trocaimagem('../img/indioserio.png');
     inputCaixa('number','campo','Insira o número');
 }
-function sair()
-{    
-    window.location.href = '../index.html';
-}

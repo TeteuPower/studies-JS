@@ -55,7 +55,3 @@ function botaoDir()
     textos('Ferramenta do Índio','O Índio Calculista!','Digite a quantidade de números que você deseja tirar a média','Próximo','Reset');
     trocaimagem('../img/indioserio.png');
 }
-function sair()
-{    
-    window.location.href = '../index.html';
-}

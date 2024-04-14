@@ -33,7 +33,3 @@ function botaoDir()
     rodada2('Tabuada do Índio','Insira o número que deseja a tabuada','../img/indioserio.png');
     inputCaixa('number','caixa','Digite aqui');
 }
-function sair()
-{    
-    window.location.href = '../index.html';
-}

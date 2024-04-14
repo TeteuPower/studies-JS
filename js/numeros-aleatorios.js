@@ -42,7 +42,3 @@ function reiniciar()
     inverteBotoes(1);
     resultadoLabel.textContent = 'Nenhum número sorteado até agora';
 }
-function sair()
-{    
-    window.location.href = '../index.html';
-}

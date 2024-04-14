@@ -58,7 +58,3 @@ function botaoDir()
     inputCaixa('number','chute','Insira um número')
 }
 //////////////////////////////////////////////////////
-function sair()
-{    
-    window.location.href = '../index.html';
-}
