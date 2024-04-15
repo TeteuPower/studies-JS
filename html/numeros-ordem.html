@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Inter:wght@400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/numeros-ordem.css">
     <title id="tituloAba"></title>
 </head>
 
@@ -26,8 +26,8 @@
                         <!--<input type="number" min="1" max="10" class="container__input"> (É a caixa para inserção dos números) -->
                     </div>
                     <div class="container__botoes">
-                        <!-- <button onclick="botaoEsq()" id="idBotaoEsq" class="container__botao"></button> -->
-                        <!-- Botões inseridos de forma dinâmica pelo JS -->
+                        <button onclick="botaoEsq()" id="idBotaoEsq" class="container__botao"></button> <!-- button onclick, criei um botão porém ser atribuída uma ação, que é a "verificarChute" -->
+                        <button onclick="botaoDir()" id="idBotaoDir" class="container__botao" disabled></button>
                     </div>
             </div>
             <img id="idImgPrincipal" src="" alt="Desenho de um índio" class="container__imagem-pessoa" />
@@ -35,7 +35,7 @@
     </div>
     <button onclick="sair()" id="idBotaoSair" class="container__botao__sair">Sair</button>
     <script src="../js/funcoes.js" defer></script>
-    <script src="/js/numero-ordem.js" defer></script>
+    <script src="../js/numeros-ordem.js" defer></script>
 </body>
 
 </html>
