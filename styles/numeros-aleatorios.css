@@ -102,6 +102,7 @@ body::before {
     top: 85px;
     right: 70px;
     transform: translate(-100%, 0);
+    cursor: pointer;
 }
 
 .container__botao {

@@ -54,7 +54,7 @@
     grid-template-columns: 1.375fr 1fr;
     column-gap: 5rem;
   
-    background: white url('./assets/oculos.png') no-repeat bottom left;
+    background: white url('../img/oculos.png') no-repeat bottom left;
     background-size: auto 40%;
   
     position: relative;
@@ -65,7 +65,7 @@
     position: absolute;
     width: 31.9375rem;
     height: 2.0625rem;
-    background-image: url('./assets/grafismo-azul.svg');
+    background-image: url('../img/grafismo-azul.svg');
     top: -1rem;
   }
   
@@ -110,7 +110,7 @@
     font-weight: 400;
     line-height: 110%;
     
-    background: url('./assets/arrow-down.svg') no-repeat right 1rem top 50%;
+    background: url('../img/arrow-down.svg') no-repeat right 1rem top 50%;
   }
   
   .dropdown {
@@ -186,6 +186,21 @@
     font-weight: 700;
     line-height: normal;
   }
+
+  .container__botao__sair {
+    border-radius: 16px;
+    background: #1875E8;
+    padding: 16px 24px;
+    width: 100px;
+    font-size: 24px;
+    font-weight: 700;
+    border: none;
+    position: fixed;
+    top: 85px;
+    right: 70px;
+    transform: translate(-100%, 0);
+    cursor: pointer;
+}
   
   .carrinho {
     display: flex;

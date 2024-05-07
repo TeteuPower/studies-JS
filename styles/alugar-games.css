@@ -158,6 +158,7 @@
     top: 135px;
     right: 30px;
     transform: translate(-100%, 0);
+    cursor: pointer;
 }
 
 .modal {

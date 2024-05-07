@@ -25,10 +25,11 @@
       <form class="formulario">
         <label class="campo-grupo">
           <span class="texto-medio-azul">Produto</span>
-          <select class="produto-input" name="produto" id="produto">
-            <option value="Fone de ouvido - R$100">Fone de ouvido - R$100</option>
-            <option value="Celular - R$1400">Celular - R$1400</option>
-            <option value="Oculus VR - R$5000">Oculus VR - R$5000</option>
+          <select class="produto-input" name="produto" id="produto"> <!-- o <select> abre um input com opções e cada <option> é uma opção do select -->
+            <option value="" disabled selected>Escolha um produto</option>
+            <option value="100">Fone de ouvido - R$100,00</option> <!-- o value é o valor que vai retornar para o JS -->
+            <option value="1400">Celular - R$1.400,00</option>
+            <option value="5000">Oculus VR - R$5.000,00</option>
           </select>
           </div>
         </label>
@@ -57,18 +58,20 @@
 
       <section class="carrinho__produtos" id="lista-produtos">
         <section class="carrinho__produtos__produto">
-          <span class="texto-azul">1x</span> Celular <span class="texto-azul">R$1400</span>
+          <p id="texto-carrinho">Nenhum produto adicionado ao carrinho</p>
+          <!--<span class="texto-azul"></span><span id="nome-produto"></span><span class="texto-azul"></span>-->
         </section>
       </section>
 
       <div class="divisoria"></div>
 
       <p class="carrinho__total">
-        Total: <span class="texto-azul" id="valor-total">R$1400</span>
+        Total: <span class="texto-azul" id="valor-total">R$ 0,00</span>
       </p>
     </section>
   </main>
-
+  <button onclick="sair()" id="idBotaoSair" class="container__botao__sair">Sair</button>
+  <script src="../js/funcoes.js"></script>
   <script src="../js/carrinho-compras.js"></script>
 </body>
 

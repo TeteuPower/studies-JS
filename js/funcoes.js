@@ -44,6 +44,22 @@ function adicionaTexto(tipoTexto,idTexto, texto)
     document.getElementById('divTextos').appendChild(inputP);
 }
 //////////////////////////////////////////////////////
+function adicionaSpan(produto)
+{
+    let novaDiv = document.createElement("div");
+    novaDiv.id = produto;
+    let carrinhoQuantidade = document.createElement("span");
+    carrinhoQuantidade.className = "texto-azul";
+    let carrinhoNome = document.createElement("span");
+    carrinhoNome.id = "nome-produto";
+    let carrinhoPreco = document.createElement("span");
+    carrinhoPreco.className = "texto-azul";
+    document.querySelector('.carrinho__produtos__produto').appendChild(novaDiv);
+    document.getElementById(produto).appendChild(carrinhoQuantidade);
+    document.getElementById(produto).appendChild(carrinhoNome);
+    document.getElementById(produto).appendChild(carrinhoPreco);
+}
+//////////////////////////////////////////////////////
 function limpaTexto(idTexto)
 {
     let removeTexto = document.getElementById(idTexto);

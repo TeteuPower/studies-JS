@@ -49,4 +49,4 @@ function botaoDir()
     rodada2('Digite os números que deseja organizar:','Separe os números por vírgula','../img/indioserio.png');
     limpaCampo('inputNumeros');
     inverteBotoes(1);
-;}
+}
