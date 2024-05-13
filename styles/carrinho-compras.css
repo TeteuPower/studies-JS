@@ -254,3 +254,18 @@
   .adicionar-produto {
     padding-bottom: 180px;
   }
+
+  .carrinho__produtos__produto {
+    display: flex; /* Torna o item do carrinho um flex container */
+    justify-content: space-between; /* Distribui os elementos horizontalmente */
+    align-items: center; /* Alinha os elementos verticalmente */
+  }
+  
+  .produto-total {
+    text-align: right; /* Alinha o texto "Total" e o valor à direita */
+  }
+  
+  .texto-cinza {
+    color: #555; /* Cor cinza para o texto "Total" */
+  }
+  
