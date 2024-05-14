@@ -1,0 +1,65 @@
+body {
+    font-family: sans-serif;
+    background-color: #222;
+    color: #fff;
+    display: flex;
+    flex-direction: column; /* Alinha os elementos em coluna */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px; /* Adiciona espaço abaixo do container */
+}
+
+input, button {
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049; /* Verde mais escuro */
+}
+
+#result {
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+/* Estilos para o botão "Sair" */
+.container__botao__sair {
+    background-color: #f44336; /* Vermelho */
+    color: white;
+    padding: 15px 30px; /* Aumenta o tamanho do botão */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em; /* Aumenta o tamanho da fonte */
+}
+
+.container__botao__sair:hover {
+    background-color: #d32f2f; /* Vermelho mais escuro */
+}
+
+input {
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    width: calc(100% - 20px); /* Ocupa toda a largura do container menos o padding */
+    box-sizing: border-box; /* Inclui o padding e a borda no cálculo da largura */
+    text-align: center;
+}

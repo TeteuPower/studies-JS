@@ -13,6 +13,7 @@ adicionaBotao(alugarGames, 'botaoAlugarGames', 'Alugar Jogos', 'botoes2')
 adicionaBotao(numerosOrdem, 'botaoNumerosOrdem', 'Organizar Números', 'botoes2');
 adicionaBotao(carrinhoCompras, 'botaoCarrinhoCompras','Carrinho Compras','botoes');
 adicionaBotao(calculadora, 'botaoCalculadora','Calculadora','botoes');
+adicionaBotao(temperatura, 'botaoTemperatura','Celsius para Fahrenheit','botoes2');
 
 function botaoEsq()
 {
@@ -78,4 +79,9 @@ function carrinhoCompras()
 function calculadora()
 {
     window.location.href = 'html/calculadora.html';
+}
+
+function temperatura()
+{
+    window.location.href = '../html/temperatura.html';
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/temperatura.css"> <title>Conversor de Temperatura</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Conversor de Temperatura</h1>
+
+        <select id="conversionType">
+            <option value="celsiusToFahrenheit">Celsius para Fahrenheit</option>
+            <option value="fahrenheitToCelsius">Fahrenheit para Celsius</option>
+        </select>
+
+        <input type="number" id="celsiusInput" placeholder="Digite a temperatura em Celsius">
+        <input type="number" id="fahrenheitInput" placeholder="Digite a temperatura em Fahrenheit" style="display: none;">
+
+        <button id="convertBtn">Converter</button>
+        <p id="result"></p>
+    </div>
+    <button onclick="sair()" id="idBotaoSair" class="container__botao__sair">Sair</button>
+    <script src="/js/temperatura.js"></script> </body>
+    <script src="/js/funcoes.js"></script> </body>
+</html>
