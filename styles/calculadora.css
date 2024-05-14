@@ -1,0 +1,82 @@
+body {
+    font-family: sans-serif;
+    background-color: #222; /* Tema escuro */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    gap: 20px; /* Espaço entre calculadora e área de imagem */
+}
+
+.calculator {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+@font-face {
+    font-family: 'IndioFont';
+    src: url('caminho/para/sua/fonte/indio.ttf') format('truetype'); /* Substitua pelo caminho da sua fonte */
+}
+
+.titulo {
+    font-family: 'IndioFont', cursive; /* Use a fonte temática */
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 10px;
+    margin-top: 0; /* Remove a margem superior */
+}
+
+#display, button {
+    font-family: 'IndioFont', cursive; /* Aplique a fonte aos números também */
+    padding: 15px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Sombra principal para efeito 3D */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transição suave para efeito 3D */
+}
+
+button:active { /* Efeito ao clicar */
+    transform: translateY(2px); /* Move o botão para baixo */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra menor ao clicar */
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    gap: 10px;
+}
+
+.operator {
+    background-color: #f0ad4e; /* Cor de destaque para operadores */
+}
+
+#equals {
+    background-color: #5cb85c; /* Cor de destaque para igual */
+    grid-column: 1 / 3; /* Ocupa as colunas 1 e 2 */
+    grid-row: 4;      /* Na 4ª linha */
+}
+
+.keypad button:last-child { /* Botão "C" */
+    background-color: red;
+    grid-column: 3;   /* Na 3ª coluna */
+    grid-row: 4;      /* Na 4ª linha */
+}
+
+.operations {
+    grid-template-columns: repeat(4, 1fr); /* Divide a linha em 4 colunas iguais */
+    text-align: center;  
+    padding-top: 4%; 
+}
+
+.tela {  /* Nova classe para o display */
+    text-align: center;
+    padding-bottom: 4%;
+}

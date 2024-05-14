@@ -12,6 +12,7 @@ adicionaBotao(numerosAleatorios, 'botaoNumeroAleatorio', 'Gerar números aleató
 adicionaBotao(alugarGames, 'botaoAlugarGames', 'Alugar Jogos', 'botoes2')
 adicionaBotao(numerosOrdem, 'botaoNumerosOrdem', 'Organizar Números', 'botoes2');
 adicionaBotao(carrinhoCompras, 'botaoCarrinhoCompras','Carrinho Compras','botoes');
+adicionaBotao(calculadora, 'botaoCalculadora','Calculadora','botoes');
 
 function botaoEsq()
 {
@@ -72,4 +73,9 @@ function numerosOrdem()
 function carrinhoCompras()
 {
     window.location.href = 'html/carrinho-compras.html';
+}
+
+function calculadora()
+{
+    window.location.href = 'html/calculadora.html';
 }

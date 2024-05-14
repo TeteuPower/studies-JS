@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Responsiva</title>
+    <link rel="stylesheet" href="/styles/calculadora.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <h2 class="titulo">Calculadora do Índio</h2> 
+            <div class="tela">
+            <input type="text" id="display" readonly>
+            </div>
+            <div class="keypad">
+                </div>
+            <div class="operations">
+                <button class="operator">+</button>
+                <button class="operator">-</button>
+                <button class="operator">x</button>
+                <button class="operator">÷</button>
+                <button id="equals">=</button>
+            </div>
+        </div>
+    </div>
+    <button onclick="sair()" id="idBotaoSair" class="container__botao__sair">Sair</button>
+    <script src="/js/calculadora.js"></script>
+    <script src="../js/funcoes.js" defer></script>
+</body>
+</html>
