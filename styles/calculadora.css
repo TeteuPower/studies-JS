@@ -1,7 +1,8 @@
 body {
     font-family: sans-serif;
-    background-color: #222; /* Tema escuro */
-    color: #fff;
+    background-image: url('/img/madeira.jpeg'); /* Imagem de fundo de madeira */
+    background-size: cover; /* Cobrir toda a área */
+    color: #333; /* Texto marrom escuro para contraste */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,73 +11,72 @@ body {
 
 .container {
     display: flex;
-    gap: 20px; /* Espaço entre calculadora e área de imagem */
+    gap: 20px;
 }
 
 .calculator {
-    background-color: #333;
+    background-color: rgba(255, 228, 196, 0.8); /* Cor de madeira clara com transparência */
+    border: 2px solid #654321; /* Borda marrom escura */
     border-radius: 10px;
     padding: 20px;
-}
-
-@font-face {
-    font-family: 'IndioFont';
-    src: url('caminho/para/sua/fonte/indio.ttf') format('truetype'); /* Substitua pelo caminho da sua fonte */
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidade */
 }
 
 .titulo {
-    font-family: 'IndioFont', cursive; /* Use a fonte temática */
+    font-family: "American Typewriter", serif; /* Use a fonte American Typewriter */
     text-align: center;
     font-size: 2em;
     margin-bottom: 10px;
-    margin-top: 0; /* Remove a margem superior */
+    margin-top: 0;
+    color: #654321; /* Texto marrom escuro */
 }
 
 #display, button {
-    font-family: 'IndioFont', cursive; /* Aplique a fonte aos números também */
+    font-family: "American Typewriter", serif; /* Use a fonte American Typewriter */
     padding: 15px;
     font-size: 1.1em;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Sombra principal para efeito 3D */
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transição suave para efeito 3D */
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2); /* Sombra suave para os botões */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; 
 }
 
-button:active { /* Efeito ao clicar */
-    transform: translateY(2px); /* Move o botão para baixo */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra menor ao clicar */
+button:active {
+    transform: translateY(2px);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
 }
 
 .keypad {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 10px;
 }
 
 .operator {
-    background-color: #f0ad4e; /* Cor de destaque para operadores */
+    background-color: #DEB887; /* Bege */
+    color: #333; /* Texto marrom escuro */
 }
 
 #equals {
-    background-color: #5cb85c; /* Cor de destaque para igual */
-    grid-column: 1 / 3; /* Ocupa as colunas 1 e 2 */
-    grid-row: 4;      /* Na 4ª linha */
+    background-color: #CD853F; /* Marrom mais claro */
+    color: #fff; /* Texto branco */
+    grid-column: 1 / 3;
+    grid-row: 4; 
 }
 
-.keypad button:last-child { /* Botão "C" */
-    background-color: red;
-    grid-column: 3;   /* Na 3ª coluna */
-    grid-row: 4;      /* Na 4ª linha */
+.keypad button:last-child {
+    background-color: #A52A2A; 
+    color: #fff; /* Texto branco */
 }
 
 .operations {
-    grid-template-columns: repeat(4, 1fr); /* Divide a linha em 4 colunas iguais */
+    grid-template-columns: repeat(4, 1fr); 
     text-align: center;  
     padding-top: 4%; 
 }
 
-.tela {  /* Nova classe para o display */
+.tela { 
     text-align: center;
     padding-bottom: 4%;
 }
